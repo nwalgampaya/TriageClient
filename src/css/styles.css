@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "malefemale";
+  src:url("fonts/malefemale.eot");
+  src:url("fonts/malefemale.eot?#iefix") format("embedded-opentype"),
+    url("fonts/malefemale.woff") format("woff"),
+    url("fonts/malefemale.ttf") format("truetype"),
+    url("fonts/malefemale.svg#malefemale") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "malefemale" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-malefemale-"]:before,
+[class*=" icon-malefemale-"]:before {
+  font-family: "malefemale" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-malefemale-malefemale:before {
+  content: "\61";
+}
