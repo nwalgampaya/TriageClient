@@ -102,7 +102,7 @@ export default class Wizard extends React.Component {
     // if(isLastPage){
       if (this.state.page == 1) {
       this.next(values)
-      return onSubmit(values)
+      // return onSubmit(values)
     } else {
       this.next(values)
     }

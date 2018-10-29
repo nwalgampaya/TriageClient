@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .welcome{
   color: #C00000;
@@ -209,3 +209,30 @@ table.pushright {
 .plusButton{
   align-self: center;
 }
+
+/* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css */
+.guideline-heading-text{
+  font-family: 'Calibri';
+  font-size: 30px;
+  /* padding-bottom: 5px;   */
+}
+.guideline-para-text{
+  font-family: 'Calibri';
+  font-size: 16px;
+}
+.button-center{
+  align-self: center;
+}
+
+.button-continue {
+  /* table-layout: fixed; */
+  widows: fixed;
+  width: 275px; 
+  height: 100px;
+  align-self: center;   
+  color:white;
+  font-size: 30px;
+  background-color:  #1f6bbb;
+  /* border-radius: 20px 20px 20px 20px;    */
+}
+/* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css */

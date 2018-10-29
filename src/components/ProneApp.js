@@ -4,7 +4,7 @@ import { Field } from 'react-final-form'
 import '../App.css';
 import '../index.css';
 import MyTable from './steps/PictoGram.js';
-import Welcome from './steps/WelcomeProne.js';
+import Welcome from './steps/Welcome.js';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
