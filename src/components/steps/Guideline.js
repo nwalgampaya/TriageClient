@@ -12,7 +12,7 @@ export default class Guideline extends React.Component {
             <div>
                 {/* <div className="row"> */}
                     <div className="col-sm-12 App">
-                        <p className="guideline-heading-text">Colonoscopy Guideline Information</p>
+                        <p className="para-heddings">Colonoscopy Guideline Information</p>
                     </div>
 
                     <div className="row">

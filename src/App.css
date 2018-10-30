@@ -211,11 +211,11 @@ table.pushright {
 }
 
 /* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css */
-.guideline-heading-text{
+/* .guideline-heading-text{
   font-family: 'Calibri';
   font-size: 30px;
-  /* padding-bottom: 5px;   */
-}
+} */
+/* padding-bottom: 5px;   */
 .guideline-para-text{
   font-family: 'Calibri';
   font-size: 16px;
@@ -234,5 +234,10 @@ table.pushright {
   font-size: 30px;
   background-color:  #1f6bbb;
   /* border-radius: 20px 20px 20px 20px;    */
+}
+
+.para-heddings{
+  font-size: 30px;
+  font-family: 'Calibri'
 }
 /* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css */
