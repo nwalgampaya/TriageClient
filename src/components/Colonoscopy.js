@@ -8,17 +8,17 @@ import Guideline from './steps/Guideline.js'
 import Symptoms from './steps/Symptoms.js'
 import Ifobt from './steps/Ifobt.js'
 import SympSwitch from './steps/SympSwitch.js'
-import ColonCat1 from  '../components/category/colonoscopy/ColonCat1.js'
+import ColonCat1 from '../components/category/colonoscopy/ColonCat1.js'
 
 export default class Colonoscopy extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             errors: {},
-            symptom: '' ,
-            positiveIFOBT:''
-        
-        
+            symptom: '',
+            positiveIFOBT: ''
+
+
             // complaintType: '111',
 
             // disableValue: false,
@@ -45,8 +45,8 @@ export default class Colonoscopy extends React.Component {
     handleSymptom = (symptomValue) => {
         console.log("symptomValue :" + symptomValue)
         // this.setState({symptom: symptomValue});
-        this.state.symptom =symptomValue;
-        
+        this.state.symptom = symptomValue;
+
         this.setState({
             symptom: symptomValue,
 
@@ -54,31 +54,38 @@ export default class Colonoscopy extends React.Component {
         console.log("symptomValue symptom:" + this.state.symptom);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         // this.state
     }
 
-    getCategoryFromServer(){
+    getCategoryFromServer() {
         console.log("inside getCategoryFromServer")
 
         let data = {
             // id:1,
             positiveIFOBT: this.state.positiveIFOBT,
-            NBCSPOrOther : this.state.NBCSPOrOther,
-          }
+            NBCSPOrOther: this.state.NBCSPOrOther,
+        }
 
-          const ifobturl = 'http://128.250.143.10:8080/ProneSpringBoot/api/getIfobtCategory/';
-          
-          var request = new Request(ifobturl, {
+        const ifobturl = 'http://128.250.143.10:8080/ProneSpringBoot/api/getIfobtCategory/';
+
+        var request = new Request(ifobturl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
             mode: "cors",
             credentials: "same-origin",
             crossDomain: true
-      
-          });
-          
+
+        });
+        console.log("inside getCategoryFromServer222")
+
+    }
+
+    handleIfobt = (iFOBTValue) => {
+        console.log("handleIfobt Colonoscopy:" + iFOBTValue)
+        this.setState({ positiveIFOBT: iFOBTValue });
+
     }
     render() {
 
@@ -86,7 +93,7 @@ export default class Colonoscopy extends React.Component {
 
         return (
             <Wizard
-            getCategoryFromServer={this.getCategoryFromServer.bind(this)}
+                getCategoryFromServer={this.getCategoryFromServer.bind(this)}
             >
                 <Wizard.Page>
                     <Welcome />
@@ -101,22 +108,22 @@ export default class Colonoscopy extends React.Component {
 
                 <Wizard.Page>
 
-                    <Symptoms onSelectSymptom={this.handleSymptom}/>
+                    <Symptoms onSelectSymptom={this.handleSymptom} />
 
                 </Wizard.Page>
 
 
-                 <Wizard.Page>
-                     {/* {this.symptomsSwitch(this.state.symptom)} */}
-                     {console.log("this.props.symptomwwwwwwwwwwwwwwww : "+ this.state.symptom)}
-                     <SympSwitch symptom ={this.state.symptom}/>
-                     
+                <Wizard.Page>
+                    {/* {this.symptomsSwitch(this.state.symptom)} */}
+                    {console.log("this.props.symptomwwwwwwwwwwwwwwww : " + this.state.symptom)}
+                    <SympSwitch symptom={this.state.symptom} onIfobt={this.handleIfobt} />
+
                 </Wizard.Page>
                 <Wizard.Page>
-                <ColonCat1/>
+                    <ColonCat1 />
                 </Wizard.Page>
-                    {/* <Ifobt/> */}
-                    {/* <DonutChart/> */}
+                {/* <Ifobt/> */}
+                {/* <DonutChart/> */}
 
             </Wizard>
 
@@ -124,16 +131,16 @@ export default class Colonoscopy extends React.Component {
         );
         // temp
 
-    //     <Wizard.Page>
-    //     {
-    //         {
-    //             'ifobt': <Ifobt />,
-    //             'bar': 'bar',
-    //             default: " return default"
-    //         }['ifobt']
-    //     }
-    //     {/* this.state.symptom */}
-    // </Wizard.Page>
+        //     <Wizard.Page>
+        //     {
+        //         {
+        //             'ifobt': <Ifobt />,
+        //             'bar': 'bar',
+        //             default: " return default"
+        //         }['ifobt']
+        //     }
+        //     {/* this.state.symptom */}
+        // </Wizard.Page>
     }
 }
 

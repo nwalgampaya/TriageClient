@@ -14,40 +14,49 @@ export default class SympSwitch extends React.Component {
         this.state = {
             errors: {},
             state: {
-                 symptom: '' ,
-                  result:<Ifobt />
-        }
+                symptom: '',
+                result: <Ifobt />,
+                positiveIFOBT: ''
+            }
         };
         param: ''
 
 
     }
 
-    componentWillUpdate(){
+    componentWillUpdate() {
     }
-    symptomsSwitch(param){
+    symptomsSwitch(param) {
         console.log("param : " + param);
         switch (param) {
             case 'ifobt':
-            return  <Ifobt />;
+                return <Ifobt onIfobt={this.handleIfobt} />;
             case 'Anaemia':
-            return  <Anaemia />;
+                return <Anaemia />;
             default:
-            this.state.result= '<Ifobt/>';
-    
-            return this.state.result;
+                this.state.result = '<Ifobt/>';
+
+                return this.state.result;
         }
     }
 
-    render(){
+    handleIfobt = (iFOBTValue) => {
+        console.log("handleIfobt top :" + iFOBTValue)
 
 
-        return(
+        this.setState({ positiveIFOBT: iFOBTValue });
+        this.props.onIfobt(iFOBTValue);
+        console.log("handleIfobt :" + iFOBTValue)
+    }
+    render() {
+
+
+        return (
             <div>
- {this.symptomsSwitch(this.props.symptom)}
- {/* {this.state.result} */}
-{console.log("this.props.symptom : "+ this.props.symptom)}
- {/* { (() => {switch (this.props.symptom) {
+                {this.symptomsSwitch(this.props.symptom)}
+                {/* {this.state.result} */}
+                {console.log("this.props.symptom : " + this.props.symptom)}
+                {/* { (() => {switch (this.props.symptom) {
             case 'ifobt': return <Ifobt />
             case 'anaemia': return <button>Approve</button>
             
