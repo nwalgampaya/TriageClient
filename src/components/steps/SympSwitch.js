@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import Ifobt from './Ifobt.js'
 // import DonutChart from './steps/donutChart.js'
 
-
+import Anaemia from './Anaemia.js'
 export default class SympSwitch extends React.Component {
 
     constructor(props) {
@@ -15,7 +15,7 @@ export default class SympSwitch extends React.Component {
             errors: {},
             state: {
                  symptom: '' ,
-                  result:'<Ifobt />'
+                  result:<Ifobt />
         }
         };
         param: ''
@@ -24,19 +24,19 @@ export default class SympSwitch extends React.Component {
     }
 
     componentWillUpdate(){
-        console.log("param : " + this.props.symptom);
-        switch (this.props.symptom) {
+    }
+    symptomsSwitch(param){
+        console.log("param : " + param);
+        switch (param) {
             case 'ifobt':
-              this.state.result= <Ifobt />;
-            case 'anaemia':
-            this.state.result= 'anaemia';
+            return  <Ifobt />;
+            case 'Anaemia':
+            return  <Anaemia />;
             default:
             this.state.result= '<Ifobt/>';
     
             return this.state.result;
         }
-    }
-    symptomsSwitch(param){
     }
 
     render(){
@@ -44,8 +44,16 @@ export default class SympSwitch extends React.Component {
 
         return(
             <div>
- {/* {this.symptomsSwitch(this.props.symptom)} */}
- {this.state.result}
+ {this.symptomsSwitch(this.props.symptom)}
+ {/* {this.state.result} */}
+{console.log("this.props.symptom : "+ this.props.symptom)}
+ {/* { (() => {switch (this.props.symptom) {
+            case 'ifobt': return <Ifobt />
+            case 'anaemia': return <button>Approve</button>
+            
+            default: return null
+          }
+        })() } */}
             </div>
         )
     }

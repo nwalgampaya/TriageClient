@@ -99,8 +99,8 @@ class Symptoms extends React.Component {
                 <label> <input onChange={this.handleChange} type="checkbox" name="Lferritin" id="9" />  Low MCV/MCH or ferritin</label><br />
                 <label> <input onChange={this.handleChange} type="checkbox" name="unknown" id="10" />  Primary of unknown origin</label><br />
                 <label> <input onChange={this.handleChange} type="checkbox" name="Abimg" id="11" />  Abnormal imaging</label><br /> */}
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </div>
-
 
 
 

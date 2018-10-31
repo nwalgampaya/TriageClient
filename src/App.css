@@ -238,6 +238,26 @@ table.pushright {
 
 .para-heddings{
   font-size: 30px;
-  font-family: 'Calibri'
+  font-family:'Open Sans',sans-serif 
 }
+
+.para-text{
+  font-size: 25px;
+  font-family: 'Open Sans', sans-serif
+}
+
+/* .features {
+  margin-top: 10px;
+  min-height: 400px;
+  border: 1px solid #8C8C8C;
+  border-radius: 7px;
+  color: #4A4A4A;
+  overflow: hidden;
+  position: relative;
+}
+.bottom-right{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+} */
 /* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css */
