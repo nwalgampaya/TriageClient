@@ -238,7 +238,9 @@ table.pushright {
 
 .para-heddings{
   font-size: 30px;
-  font-family:'Open Sans',sans-serif 
+  font-family:'Open Sans',sans-serif;
+  font-weight: bold;
+  
 }
 
 .para-text{
@@ -254,10 +256,11 @@ table.pushright {
   color: #4A4A4A;
   overflow: hidden;
   position: relative;
-}
+} */
+
 .bottom-right{
   position: absolute;
   bottom: 0;
   right: 0;
-} */
+}
 /* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css */

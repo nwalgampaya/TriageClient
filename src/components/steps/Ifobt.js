@@ -1,6 +1,7 @@
 import React from 'react';
 // import React, { Component } from 'react';
 import '../../App.css';
+import Wizard from '../../Wizard-old';
 
 export default class Ifobt extends React.Component {
 
@@ -32,8 +33,15 @@ export default class Ifobt extends React.Component {
         // this.props.onIfobt(this.state.nbscp);
 
     }
+
+    accessWizard(){
+        console.log("in access wizard")
+    }
     render() {
         return (
+            // <Wizard>
+                // <Wizard.Page accessWizard={this.accessWizard.bind(this)}>
+
             <div>
                 <div className="col-sm-12 App para-heddings">
                     <p className="">Positive immunohistochemical faecal occult blood test ( iFOBT (+) )</p>
@@ -60,8 +68,15 @@ export default class Ifobt extends React.Component {
                         {/* <Error name="sex" /> */}
                     </div>
                 </div>
-                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                {/* {(page ==3  && */}
+                {/* <div > */}
+                      {/* <button className="btn btn-primary pull-right" type="button" onClick={this.selectCategory}>Categorise colonoscopy</button> */}
+                    {/* // )} */}
+                {/* </div> */}
             </div>
+                // </Wizard.Page>
+                // </Wizard>
         )
     }
 }

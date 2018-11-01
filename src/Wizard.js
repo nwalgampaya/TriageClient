@@ -70,16 +70,23 @@ export default class Wizard extends React.Component {
       page: Math.max(state.page - 1, 0)
     }))
 
-  endSession = () =>{
+  endSession= () =>{
+    this.setState(state => ({
+      // page: Math.max(state.page + 1, 0)
+      page: 0
+    }))
+  }
+  selectCategory = () =>{
     // const {returnToFirst } = this.props
     const {getCategoryFromServer} = this.props
+    // const {accessWizard} = this.props
     this.setState(state => ({
-      // page: Math.max(state.page - 1, 0)
-      page: 0
+      page: Math.max(state.page + 1, 0)
+      // page: 0
     }))
     //  this.setState(this.baseState)
     // const { page } = this.state
-      // return returnToFirst();
+      // return accessWizard();
       return getCategoryFromServer();
     }
   /**
@@ -174,8 +181,8 @@ export default class Wizard extends React.Component {
                 </button>
 
                     )} */}
-                    {page == 0 && (
-                      <button className="invisible" type="button" onClick={this.endSession}>
+                    {(isLastPage ) &&  (
+                      <button className="btn btn-primary pull-right" type="button" onClick={this.endSession}>
                         End session
                 </button>
 
@@ -206,7 +213,7 @@ export default class Wizard extends React.Component {
                       <button className="btn btn-primary pull-right" type="submit" disabled={submitting}>Next</button>
                     )} */}
                     {(page ==3  &&
-                      <button className="btn btn-primary pull-right" type="button" disabled={submitting} onClick={this.endSession}>Categorise colonoscopy</button>
+                      <button className="btn btn-primary pull-right" type="button" disabled={submitting} onClick={this.selectCategory}>Categorise colonoscopy</button>
                     )}
 
                   </div>

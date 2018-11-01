@@ -9,6 +9,7 @@ import Symptoms from './steps/Symptoms.js'
 import Ifobt from './steps/Ifobt.js'
 import SympSwitch from './steps/SympSwitch.js'
 import ColonCat1 from '../components/category/colonoscopy/ColonCat1.js'
+import IfobtCategory1 from "./steps/ifobtCategory1.js";
 
 export default class Colonoscopy extends React.Component {
     constructor(props) {
@@ -16,7 +17,9 @@ export default class Colonoscopy extends React.Component {
         this.state = {
             errors: {},
             symptom: '',
-            positiveIFOBT: ''
+            positiveIFOBT: '',
+            positiveNBCSP:'',
+            categorySelected:''
 
 
             // complaintType: '111',
@@ -60,14 +63,17 @@ export default class Colonoscopy extends React.Component {
 
     getCategoryFromServer() {
         console.log("inside getCategoryFromServer")
+        console.log("inside getCategoryFromServer positiveIFOBT " + this.state.positiveIFOBT)
 
         let data = {
             // id:1,
-            positiveIFOBT: this.state.positiveIFOBT,
-            NBCSPOrOther: this.state.NBCSPOrOther,
+            positiveIFOBT: true,
+            // this.state.positiveIFOBT,
+            NBCSPOrOther: this.state.positiveIFOBT
+            // this.state.NBCSPOrOther,
         }
 
-        const ifobturl = 'http://128.250.143.10:8080/ProneSpringBoot/api/getIfobtCategory/';
+        const ifobturl = 'http://128.250.143.10:8090/api/getIfobtCategory';
 
         var request = new Request(ifobturl, {
             method: 'POST',
@@ -78,6 +84,24 @@ export default class Colonoscopy extends React.Component {
             crossDomain: true
 
         });
+
+        fetch(request)
+        .then((response) => {
+          return response.json();
+        })
+        .then((jsonObject) => {
+          console.log("CREATED ID :" + jsonObject);
+          this.state.jsonId = jsonObject;
+          // document.write(`ID ${jsonObject.id} was created!`);
+        })
+        .then(() => {
+          if (this.state.jsonId.length !== 0) {
+            this.setCategorybasedOnServer(this.state.jsonId)
+          }
+        })
+        .catch((error) => {
+          document.write(error);
+        });
         console.log("inside getCategoryFromServer222")
 
     }
@@ -85,6 +109,23 @@ export default class Colonoscopy extends React.Component {
     handleIfobt = (iFOBTValue) => {
         console.log("handleIfobt Colonoscopy:" + iFOBTValue)
         this.setState({ positiveIFOBT: iFOBTValue });
+
+    }
+
+    setCategorybasedOnServer(category){
+        if(category==1){
+            console.log("setCategorybasedOnServer" + category);
+
+            this.setState({categorySelected: <IfobtCategory1/>})
+            // this.state.categorySelected =<IfobtCategory1/>;
+        }
+
+        // switch (category) {
+        //     case '1':
+        //     return this.state.categorySelected ==<IfobtCategory1/>
+        //     default:
+        //         return <Ifobt/>
+        // }
 
     }
     render() {
@@ -120,7 +161,9 @@ export default class Colonoscopy extends React.Component {
 
                 </Wizard.Page>
                 <Wizard.Page>
-                    <ColonCat1 />
+                    {this.state.categorySelected}
+                {/* <IfobtCategory1/> */}
+                    {/* <ColonCat1 /> */}
                 </Wizard.Page>
                 {/* <Ifobt/> */}
                 {/* <DonutChart/> */}

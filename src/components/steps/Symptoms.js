@@ -43,7 +43,7 @@ class Symptoms extends React.Component {
                 <br />
                 </div>
                 <div className="form-check form-check-inline col-sm-12">
-                    <input className="form-check-input form-control" onChange={this.handleChange} type="checkbox" name="ifobt" id="1" value="1" />
+                    <input className="form-check-input form-control" onChange={this.handleChange} type="checkbox" name="Ifobt" id="1" value="1" />
                     <label className="form-check-label">Positive immunohistochemical faecal occult blood test (iFOBT (+)) </label>
                 </div>
 

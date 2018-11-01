@@ -29,10 +29,10 @@ export default class SympSwitch extends React.Component {
     symptomsSwitch(param) {
         console.log("param : " + param);
         switch (param) {
-            case 'ifobt':
+            case 'Ifobt':
                 return <Ifobt onIfobt={this.handleIfobt} />;
             case 'Anaemia':
-                return <Anaemia />;
+                return <Anaemia/>;
             default:
                 this.state.result = '<Ifobt/>';
 
@@ -40,6 +40,13 @@ export default class SympSwitch extends React.Component {
         }
     }
 
+    // constructSymptomPage(param){
+    //     var page = ''
+    //     page= '<' +param + '/>'
+    //     console.log("page " + page)
+    //     return JSON.stringify(page)
+        
+    // }
     handleIfobt = (iFOBTValue) => {
         console.log("handleIfobt top :" + iFOBTValue)
 
