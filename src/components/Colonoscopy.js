@@ -9,17 +9,26 @@ import Symptoms from './steps/Symptoms.js'
 import Ifobt from './steps/Ifobt.js'
 import SympSwitch from './steps/SympSwitch.js'
 import ColonCat1 from '../components/category/colonoscopy/ColonCat1.js'
-import IfobtCategory1 from "./steps/ifobtCategory1.js";
-
+import IfobtCategory1 from "./category/colonoscopy/ifobtCategory1.js";
+import IfobtCategory2 from "./category/colonoscopy/IfobtCategory2.js";
 export default class Colonoscopy extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        // this.child = React.createRef();
         this.state = {
             errors: {},
             symptom: '',
             positiveIFOBT: '',
-            positiveNBCSP:'',
-            categorySelected:''
+            NBCSPOrOther:'',
+            categorySelected:'',
+
+            // Anaemia as declared in Serverside
+            anaemia:'',
+            criticalFactor:'',
+            otherSymptoms:'',
+            likelyCause:'',
+            likelyNonGastroUntreated:'',
+            age:'',
 
 
             // complaintType: '111',
@@ -62,17 +71,18 @@ export default class Colonoscopy extends React.Component {
     }
 
     getCategoryFromServer() {
-        console.log("inside getCategoryFromServer")
-        console.log("inside getCategoryFromServer positiveIFOBT " + this.state.positiveIFOBT)
-
+        
         let data = {
             // id:1,
-            positiveIFOBT: true,
+            positiveIFOBT: 1,
             // this.state.positiveIFOBT,
-            NBCSPOrOther: this.state.positiveIFOBT
+            NBCSPOrOther: this.state.NBCSPOrOther,
+            // this.state.NBCSPOrOther
             // this.state.NBCSPOrOther,
         }
-
+        console.log("inside getCategoryFromServer positiveIFOBT" + this.state.positiveIFOBT)
+        console.log("inside getCategoryFromServer NBCSPOrOther " + this.state.NBCSPOrOther)
+        
         const ifobturl = 'http://128.250.143.10:8090/api/getIfobtCategory';
 
         var request = new Request(ifobturl, {
@@ -106,17 +116,31 @@ export default class Colonoscopy extends React.Component {
 
     }
 
-    handleIfobt = (iFOBTValue) => {
-        console.log("handleIfobt Colonoscopy:" + iFOBTValue)
-        this.setState({ positiveIFOBT: iFOBTValue });
+    handleIfobt = (NBCSPOrOtherValue) => {
+        console.log("handleNBCSPOrOther NBCSPOrOther:" + NBCSPOrOtherValue)
+        this.setState({ NBCSPOrOther: NBCSPOrOtherValue });
+
+    }
+    handleAnaemia= (anaemiaValue, criticalFactorValue) => {
+        console.log("handleNBCSPOrOther anaemiaValue:" + anaemiaValue)
+        console.log("handleNBCSPOrOther criticalFactor:" + criticalFactorValue)
+        this.setState({ anaemia: anaemiaValue });
+        this.setState({ criticalFactor: criticalFactorValue });
 
     }
 
+  
+
     setCategorybasedOnServer(category){
-        if(category==1){
+        if(category==   2){
             console.log("setCategorybasedOnServer" + category);
 
             this.setState({categorySelected: <IfobtCategory1/>})
+            // this.state.categorySelected =<IfobtCategory1/>;
+        } else if(category==1){
+            console.log("setCategorybasedOnServer" + category);
+
+            this.setState({categorySelected: <IfobtCategory2/>})
             // this.state.categorySelected =<IfobtCategory1/>;
         }
 
@@ -127,6 +151,11 @@ export default class Colonoscopy extends React.Component {
         //         return <Ifobt/>
         // }
 
+    }
+
+    selectPreviousColon(){
+        console.log("In ifobt selectPreviousColon")
+        // this.child.previous();
     }
     render() {
 
@@ -157,7 +186,10 @@ export default class Colonoscopy extends React.Component {
                 <Wizard.Page>
                     {/* {this.symptomsSwitch(this.state.symptom)} */}
                     {console.log("this.props.symptomwwwwwwwwwwwwwwww : " + this.state.symptom)}
-                    <SympSwitch symptom={this.state.symptom} onIfobt={this.handleIfobt} />
+                    <SympSwitch symptom={this.state.symptom} onIfobt={this.handleIfobt} onAnaemia={this.handleAnaemia}
+                    selectPreviousColon={this.selectPreviousColon.bind(this)} 
+                    // ref={instance => { this.child = instance; }}
+                    />
 
                 </Wizard.Page>
                 <Wizard.Page>

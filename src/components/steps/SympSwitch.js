@@ -16,23 +16,38 @@ export default class SympSwitch extends React.Component {
             state: {
                 symptom: '',
                 result: <Ifobt />,
-                positiveIFOBT: ''
+                
+                // Ifobt values as in serverside
+                positiveNBCSP: '',
+
+                // Anaemia as declared in Serverside
+                anaemia:'',
+                criticalFactor:'',
+                otherSymptoms:'',
+                likelyCause:'',
+                likelyNonGastroUntreated:'',
+                age:'',
+
             }
         };
         param: ''
 
 
     }
-
+    selectPreviousSymSw(){
+        console.log("In ifobt selectPreviousSymSw")
+        const {selectPreviousColon} = this.props
+        return selectPreviousColon();
+    }
     componentWillUpdate() {
     }
     symptomsSwitch(param) {
         console.log("param : " + param);
         switch (param) {
             case 'Ifobt':
-                return <Ifobt onIfobt={this.handleIfobt} />;
+                return <Ifobt onIfobt={this.handleIfobt} selectPreviousSymSw={this.selectPreviousSymSw.bind(this)}/>;
             case 'Anaemia':
-                return <Anaemia/>;
+                return <Anaemia onAnaemia ={this.handleAnaemia}/>;
             default:
                 this.state.result = '<Ifobt/>';
 
@@ -51,10 +66,23 @@ export default class SympSwitch extends React.Component {
         console.log("handleIfobt top :" + iFOBTValue)
 
 
-        this.setState({ positiveIFOBT: iFOBTValue });
+        this.setState({ positiveNBCSP: iFOBTValue });
         this.props.onIfobt(iFOBTValue);
         console.log("handleIfobt :" + iFOBTValue)
     }
+
+    handleAnaemia = (anaemiaValue, anaemiaCriticalValue) => {
+        console.log("handleIfobt top :" + anaemiaValue)
+
+
+        this.setState({ anaemia: anaemiaValue });
+        this.setState({ criticalFactor: anaemiaCriticalValue });
+        this.props.onAnaemia(anaemiaValue,anaemiaCriticalValue);
+        console.log("handleIfobt :" + anaemiaValue)
+
+        
+    }
+
     render() {
 
 

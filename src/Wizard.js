@@ -30,6 +30,7 @@ export default class Wizard extends React.Component {
       counter:0
     }
     // this.baseState = this.state
+    // this.previous = this.previous.bind(this);
   }
 
   rndno = (min, max) => {
@@ -199,7 +200,7 @@ export default class Wizard extends React.Component {
                     {/* Invisible button to get the next button allignment correctly */}
                     {  page > 0 &&( <button className="invisible" type="button" ></button>)}
 
-                    { page == 3 && (<button className="btn btn-primary" type="button" onClick={this.previous}> Back</button>)}
+                    {/* { page == 3 && (<button className="btn btn-primary" type="button" onClick={this.previous}> Back</button>)} */}
                     
                     {page ==2  &&(<button className="btn btn-primary pull-right" type="submit"  >Next</button>)} 
                     {/* {page ==3  &&(<button className="btn btn-primary pull-right" type="submit"  >Next</button>)}  */}

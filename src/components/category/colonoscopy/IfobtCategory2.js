@@ -1,8 +1,8 @@
 import React from 'react';
 // import React, { Component } from 'react';
-import '../../App.css';
+import '../../../App.css';
 
-export default class IfobtCategory1 extends React.Component {
+export default class IfobtCategory2 extends React.Component {
 
 
 
@@ -15,7 +15,8 @@ export default class IfobtCategory1 extends React.Component {
                     </div>
 
                     <div className="col-sm-12 App para-text">
-                        <p>Colonoscopy for this patient is Category 1. This means that the colonoscopy should be undertaken in less than 30 days.</p>
+                        <p>Colonoscopy for this patient is <b>Not indicated</b>.iFOBT (+) in the context of a recent,
+                            high-quality complete colonoscopy should be considered on an individual basis after full specialist assessment</p>
                     </div>
                 </div>
                 <br/>

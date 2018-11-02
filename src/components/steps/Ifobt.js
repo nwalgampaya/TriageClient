@@ -2,49 +2,86 @@ import React from 'react';
 // import React, { Component } from 'react';
 import '../../App.css';
 import Wizard from '../../Wizard-old';
+import { Field } from 'react-final-form'
+import { Form } from 'react-final-form'
+import SympSwitch from './SympSwitch.js'
 
 export default class Ifobt extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            nbscp: '',
+            nbcsp: '',
 
         }
-
+this.selectPrevious= this.selectPrevious.bind(this)
     }
-    setNbscp(e) {
-        console.log("setNbscp :" + e.target.value);
+    setNbcsp(e) {
+        console.log("setnbcsp :" + e.target.value);
         // this.setState
         this.setState({
-            nbscp: e.target.value,
+            nbcsp: e.target.value,
         });
-        this.state.nbscp = e.target.value
+        this.state.nbcsp = e.target.value
         this.props.onIfobt(e.target.value);
     }
 
     componentDidMount() {
-        console.log("componentDidMount :" + this.state.nbscp);
+        console.log("componentDidMount :" + this.state.nbcsp);
 
     }
 
     componentWillUpdate() {
-        console.log("componentWillUpdate :" + this.state.nbscp);
-        // this.props.onIfobt(this.state.nbscp);
+        console.log("componentWillUpdate :" + this.state.nbcsp);
+        // this.props.onIfobt(this.state.nbcsp);
 
     }
 
     accessWizard(){
         console.log("in access wizard")
     }
+
+    validate = (values) => {
+
+        console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 22222")
+        const { props } = this.activePage;
+        return props.validate ? props.validate(values) : {};
+    }
+
+    selectPrevious(){
+        console.log("In ifobt selectPrevious")
+        const {selectPreviousSymSw} = this.props
+        return selectPreviousSymSw();
+    }
     render() {
+
+        const Error = ({ name }) => (
+            <Field
+              name={name}
+              subscribe={{ touched: true, error: true }}
+              render={({ meta: { touched, error } }) =>
+                touched && error ? <span>{error}</span> : null
+              }
+            />
+          )
         return (
             // <Wizard>
-                // <Wizard.Page accessWizard={this.accessWizard.bind(this)}>
+            // accessWizard={this.accessWizard.bind(this)}
+            // <Form
+            // // initialValues={values}
+            // validate={this.validate}
+            // onSubmit={this.handleSubmit}>
+                <Wizard.Page validate={values => {
+                    const errors = {}
+                    console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111")
+                    if (!this.state.nbcsp) {
+                        errors.NBCSP = 'Please select the appropriate option'
+                      }    
+                }}>
 
             <div>
                 <div className="col-sm-12 App para-heddings">
-                    <p className="">Positive immunohistochemical faecal occult blood test ( iFOBT (+) )</p>
+                    <p className="">iFOBT</p>
                 </div>
                 <br />
 
@@ -56,16 +93,16 @@ export default class Ifobt extends React.Component {
                     <label className="control-margin-lbl para-text"   > Does the patient have an NBCSP or other indication? </label>
                 </div>
                 <div className="col-sm-4">
-                    <div className="form-check form-check-inline" onChange={this.setNbscp.bind(this)}>
+                    <div className="form-check form-check-inline" onChange={this.setNbcsp.bind(this)}>
                         {/* checked={this.state.sex == 1 ? true : false} */}
-                        <input className="form-check-input" type="radio" value="1" name="sex" />
+                        <input className="form-check-input" type="radio" value="1" checked={this.state.sex == 1 ? true : false} name="NBCSP" />
                         <label className="form-check-label" >Yes</label>
                         {/* checked={this.state.sex == 2 ? true : false} */}
-                        <input className="form-check-input" type="radio" value="2" name="sex" />
+                        <input className="form-check-input" type="radio" value="2" checked={this.state.sex == 2 ? true : false} name="NBCSP" />
                         <label className="form-check-label" >No</label></div>
                     <br></br>
                     <div className="validationMsg">
-                        {/* <Error name="sex" /> */}
+                        <Error name="NBCSP" />
                     </div>
                 </div>
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -74,9 +111,14 @@ export default class Ifobt extends React.Component {
                       {/* <button className="btn btn-primary pull-right" type="button" onClick={this.selectCategory}>Categorise colonoscopy</button> */}
                     {/* // )} */}
                 {/* </div> */}
+                <div > 
+                      <button className="btn btn-primary pull-left" type="button" onClick={this.selectPrevious}>Previous</button>
+                    {/* // )} */}
+                </div>
             </div>
-                // </Wizard.Page>
-                // </Wizard>
+                 </Wizard.Page>
+                //  </Form>
+                // {/* // </Wizard> */}
         )
     }
 }
