@@ -8,8 +8,8 @@ class Symptoms extends React.Component {
         // this.Symptoms= this.Symptoms.bind(this);
         this.state = {
             errors: {},
-            SymptomsList:[]
-            
+            SymptomsList: []
+
         };
         param: 'ifobt'
 
@@ -17,28 +17,58 @@ class Symptoms extends React.Component {
         this.handleChange = this.handleChange.bind(this);
 
     }
-    
+
     handleChange(e) {
         // console.log("in check change" + e.target.checked)
         console.log("in check change" + e.target.name)
         // console.log("in check change" + e.target.id)
-        var newArray = this.state.SymptomsList.slice();  
-        newArray.push(e.target.name);   
+        var newArray = this.state.SymptomsList.slice();
+        newArray.push(e.target.name);
         // this.setState({SymptomsList:newArray})
-        this.state.SymptomsList=newArray
+        this.state.SymptomsList = newArray
         // this.state.SymptomsList=this.state.SymptomsList + e.target.name
         console.log("in check this.props.onSelectSymptom" + this.state.SymptomsList)
 
         // this.props.onSelectSymptom(e.target.name);
+        // console.log("final symptom : " + this.getPrioritySymptom(this.state.SymptomsList))
         this.props.onSelectSymptom(this.state.SymptomsList)
         // this.setState({
-            //   complete: !this.state.complete
-            // });
+        //   complete: !this.state.complete
+        // });
+    }
+
+
+    getPrioritySymptom(param) {
+        console.log("in getPrioritySymptom :" + param)
+        // if (this.loopSymptoms(param, "Ifobt")) {
+        //     console.log("getPrioritySymptom : ifobt")
+        // } else if ("Aneamia" == this.loopSymptoms(param)) {
+        //     console.log("getPrioritySymptom : aneamia")
+        // }
+
+        switch (param) {
+            case 'Ifobt':
+                // this.state.ifobtState = true;
+                return this.loopSymptoms(param, "Ifobt")
+            default:
+                return '<loop />';
+
         }
-        
-        
-        render() {
-            const grterThn ="<";
+
+    }
+
+    loopSymptoms(param, symptop) {
+        param.map((param) => {
+            if (symptop == param) {
+
+                return param
+                console.log("getPrioritySymptom symptom: " + param)
+            }
+        });
+    }
+
+    render() {
+        const grterThn = "<";
 
         return (
             <div>
@@ -66,9 +96,9 @@ class Symptoms extends React.Component {
                     <label className="form-check-label">  Rectal bleeding </label>
                 </div>
 
-                 <div className="form-check form-check-inline col-sm-12">
+                <div className="form-check form-check-inline col-sm-12">
                     {/* <input className="form-check-input form-control" onChange={this.handleChange} type="checkbox" name="Rctlbld" id="3" value="1" /> */}
-                    <input className="form-check-input form-control" onChange={this.handleChange} type="checkbox" name="Altbh" id="4"/>
+                    <input className="form-check-input form-control" onChange={this.handleChange} type="checkbox" name="Altbh" id="4" />
                     <label className="form-check-label">  Altered bowel habit (> 6/52 and {grterThn} 12 months) </label>
                 </div>
                 <div className="form-check form-check-inline col-sm-12">
@@ -108,7 +138,7 @@ class Symptoms extends React.Component {
                 <label> <input onChange={this.handleChange} type="checkbox" name="Lferritin" id="9" />  Low MCV/MCH or ferritin</label><br />
                 <label> <input onChange={this.handleChange} type="checkbox" name="unknown" id="10" />  Primary of unknown origin</label><br />
                 <label> <input onChange={this.handleChange} type="checkbox" name="Abimg" id="11" />  Abnormal imaging</label><br /> */}
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             </div>
 
 
