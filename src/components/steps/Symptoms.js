@@ -8,6 +8,7 @@ class Symptoms extends React.Component {
         // this.Symptoms= this.Symptoms.bind(this);
         this.state = {
             errors: {},
+            SymptomsList:[]
             
         };
         param: 'ifobt'
@@ -18,10 +19,18 @@ class Symptoms extends React.Component {
     }
     
     handleChange(e) {
-        console.log("in check change" + e.target.checked)
+        // console.log("in check change" + e.target.checked)
         console.log("in check change" + e.target.name)
-        console.log("in check change" + e.target.id)
-        this.props.onSelectSymptom(e.target.name);
+        // console.log("in check change" + e.target.id)
+        var newArray = this.state.SymptomsList.slice();  
+        newArray.push(e.target.name);   
+        // this.setState({SymptomsList:newArray})
+        this.state.SymptomsList=newArray
+        // this.state.SymptomsList=this.state.SymptomsList + e.target.name
+        console.log("in check this.props.onSelectSymptom" + this.state.SymptomsList)
+
+        // this.props.onSelectSymptom(e.target.name);
+        this.props.onSelectSymptom(this.state.SymptomsList)
         // this.setState({
             //   complete: !this.state.complete
             // });
