@@ -12,7 +12,7 @@ import Symptoms from './steps/Symptoms.js'
 import IfobtCategory1 from "./category/colonoscopy/ifobtCategory1.js";
 import IfobtCategory2 from "./category/colonoscopy/IfobtCategory2.js";
 import AnaemiaCategory1 from "./category/colonoscopy/AnaemiaCategory1.js";
-
+import { Field } from 'react-final-form'
 // import Ifobt from '../components/steps/Ifobt.js'
 // import Anaemia from './steps/Anaemia.js'
 
@@ -28,6 +28,7 @@ export default class Colonoscopy extends React.Component {
             categorySelected: '',
             dataToServer:{},
             serverurl:'',
+            age:111,
 
             // Anaemia as declared in Serverside
             anaemia: '',
@@ -65,7 +66,20 @@ export default class Colonoscopy extends React.Component {
     //             return '<Ifobt/>';
     //     }
     // }
-
+    setAge(event) {
+        console.log("Age :" + event.target.value);
+        if (this.state.clearvalues == 1) {
+          this.setState({
+            age: '',
+          });
+        } else {
+    
+          this.setState({
+            age: event.target.value,
+          });
+        }
+        // this.setClearValue()
+      }
     handleSymptom = (symptomValue) => {
         console.log("symptomValue :" + symptomValue)
         // this.setState({symptom: symptomValue});
@@ -370,10 +384,19 @@ export default class Colonoscopy extends React.Component {
     render() {
 
         // const grterThn = "<";
-
+        const Error = ({ name }) => (
+            <Field
+              name={name}
+              subscribe={{ touched: true, error: true }}
+              render={({ meta: { touched, error } }) =>
+                touched && error ? <span>{error}</span> : null
+              }
+            />)
 
         return (
             <Wizard
+            initialValues={{ employed: true }}
+            // onSubmit={this.onSubmit.bind(this)}
                 getCategoryFromServer={this.getCategoryFromServer.bind(this)}
             >
                 <Wizard.Page>
@@ -386,10 +409,25 @@ export default class Colonoscopy extends React.Component {
                     <Guideline />
 
                 </Wizard.Page>
+                {/* <Wizard.Page>
+               
 
-                <Wizard.Page>
+               
+
+                </Wizard.Page> */}
+                {/* validate={this.validate}> */}
+                <Wizard.Page >
                     {/* Commenting */}
-                    <Symptoms onSelectSymptom={this.handleSymptom} />
+                    <Symptoms   validate={values => {
+                const errors = {}
+                console.log("in validation Symptoms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111 :" +this.state.age)
+                if (this.state.age == '') {
+                    alert("In error age")
+                    errors.ageColumn = 'Please enter an appropriate value'
+                  }
+                return errors
+                      }}
+                      onSelectSymptom={this.handleSymptom} />
                    
                 </Wizard.Page>
 
