@@ -9,6 +9,7 @@ import logoM from '../src/img/logoM.png';
 // import background from '../src/img/headervector.png';
 import uniLogo from '../src/img/UniLogo.png';
 import globalHealthLogo from '../src/img/globalHealth.png'
+import DHHSLogo from '../src/img/DHHSLogo.png';
 import proneImg from '../src/img/ProneProne.png';
 
 import Styles from './Styles'
@@ -27,7 +28,7 @@ export default class Wizard extends React.Component {
     this.state = {
       page: 0,
       values: props.initialValues || {},
-      counter:0
+      counter: 0
     }
     // this.baseState = this.state
     // this.previous = this.previous.bind(this);
@@ -71,15 +72,15 @@ export default class Wizard extends React.Component {
       page: Math.max(state.page - 1, 0)
     }))
 
-  endSession= () =>{
+  endSession = () => {
     this.setState(state => ({
       // page: Math.max(state.page + 1, 0)
       page: 0
     }))
   }
-  selectCategory = () =>{
+  selectCategory = () => {
     // const {returnToFirst } = this.props
-    const {getCategoryFromServer} = this.props
+    const { getCategoryFromServer } = this.props
     // const {accessWizard} = this.props
     this.setState(state => ({
       page: Math.max(state.page + 1, 0)
@@ -87,9 +88,9 @@ export default class Wizard extends React.Component {
     }))
     //  this.setState(this.baseState)
     // const { page } = this.state
-      // return accessWizard();
-      return getCategoryFromServer();
-    }
+    // return accessWizard();
+    return getCategoryFromServer();
+  }
   /**
  * NOTE: Both validate and handleSubmit switching are implemented
  * here because 🏁 Redux Final Form does not accept changes to those
@@ -109,7 +110,7 @@ export default class Wizard extends React.Component {
     const isLastPage = page === React.Children.count(children) - 1
 
     // if(isLastPage){
-      if (this.state.page == 1) {
+    if (this.state.page == 1) {
       this.next(values)
       // return onSubmit(values)
     } else {
@@ -117,13 +118,13 @@ export default class Wizard extends React.Component {
     }
   }
 
-  
+
   render() {
 
     // var sectionStyle = {
     //   width: "100%",
     //   height: "400px",
-      // backgroundImage: `url(${background})`
+    // backgroundImage: `url(${background})`
     // };
 
     const { children } = this.props
@@ -135,7 +136,7 @@ export default class Wizard extends React.Component {
         <div className="container">
 
           {/* <div className="header"> */}
-            {/* <div className="pull-left logo">
+          {/* <div className="pull-left logo">
               <a><img src={uniLogo} alt={"logo"} /> </a>
             </div>
             <div className="pull-right top_menu">
@@ -148,33 +149,33 @@ export default class Wizard extends React.Component {
         </div>
         <div className="container">
           <div className='content_body centered' >
-          <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                            <div className="pull-right top_menu container">
-                                    <a ><img src={globalHealthLogo}  /> </a>
-                                </div>
-                            </td>
-                            <td>
-                                <div className="pull-left logo">
-                                    <a><img src={uniLogo} alt={"logo"} /> </a>
-                                </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <div className="pull-right top_menu container">
+                      {/* <a ><img src={globalHealthLogo} /> </a> */}
+                    </div>
+                  </td>
+                  <td>
+                    <div className="pull-right logo">
+                      <a><img src={DHHSLogo} alt={"logo"} /> </a>
+                    </div>
 
-                            </td>
-                        </tr>
-                    </tbody>
-           </table> 
-           <br/>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
             <Form
               initialValues={values}
               validate={this.validate}
               onSubmit={this.handleSubmit}>
               {({ handleSubmit, submitting, values }) => (
-                
+
                 <form onSubmit={handleSubmit}>
                   {activePage}
-                  <br/>
+                  <br />
                   <div className="buttons">
                     {/* {page > 0 && (
                       <button type="button" onClick={this.previous}>
@@ -182,7 +183,7 @@ export default class Wizard extends React.Component {
                 </button>
 
                     )} */}
-                    {(isLastPage ) &&  (
+                    {(isLastPage) && (
                       <button className="btn btn-primary pull-right" type="button" onClick={this.endSession}>
                         End session
                 </button>
@@ -198,11 +199,11 @@ export default class Wizard extends React.Component {
                     )} */}
 
                     {/* Invisible button to get the next button allignment correctly */}
-                    {  page > 0 &&( <button className="invisible" type="button" ></button>)}
+                    {page > 0 && (<button className="invisible" type="button" ></button>)}
 
-                    { page == 3 && (<button className="btn btn-primary" type="button" onClick={this.previous}> Back</button>)}
-                    
-                    {page ==2  &&(<button className="btn btn-primary pull-right" type="submit"  >Next</button>)} 
+                    {page == 3 && (<button className="btn btn-primary" type="button" onClick={this.previous}> Back</button>)}
+
+                    {page == 2 && (<button className="btn btn-primary pull-right" type="submit"  >Next</button>)}
                     {/* {page ==3  &&(<button className="btn btn-primary pull-right" type="submit"  >Next</button>)}  */}
 
                     {/* {!page == 0 && !page == 1 && !isLastPage && <button className="btn btn-primary pull-right " type="submit">  Next  </button>} */}
@@ -213,7 +214,7 @@ export default class Wizard extends React.Component {
                     {/* {(page == 3 &&
                       <button className="btn btn-primary pull-right" type="submit" disabled={submitting}>Next</button>
                     )} */}
-                    {(page ==3  &&
+                    {(page == 3 &&
                       <button className="btn btn-primary pull-right" type="button" disabled={submitting} onClick={this.selectCategory}>Categorise colonoscopy</button>
                     )}
 
