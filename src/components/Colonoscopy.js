@@ -13,6 +13,7 @@ import IfobtCategory1 from "./category/colonoscopy/ifobtCategory1.js";
 import IfobtCategory2 from "./category/colonoscopy/IfobtCategory2.js";
 import AnaemiaCategory1 from "./category/colonoscopy/AnaemiaCategory1.js";
 import { Field } from 'react-final-form'
+import PatientInfo from "./steps/PatientInfo.js";
 // import Ifobt from '../components/steps/Ifobt.js'
 // import Anaemia from './steps/Anaemia.js'
 
@@ -26,9 +27,9 @@ export default class Colonoscopy extends React.Component {
             positiveIFOBT: false,
             haveNBCSPOrOther: true,
             categorySelected: '',
-            dataToServer:{},
-            serverurl:'',
-            age:111,
+            dataToServer: {},
+            serverurl: '',
+            age: 111,
 
             // Anaemia as declared in Serverside
             anaemia: '',
@@ -69,17 +70,17 @@ export default class Colonoscopy extends React.Component {
     setAge(event) {
         console.log("Age :" + event.target.value);
         if (this.state.clearvalues == 1) {
-          this.setState({
-            age: '',
-          });
+            this.setState({
+                age: '',
+            });
         } else {
-    
-          this.setState({
-            age: event.target.value,
-          });
+
+            this.setState({
+                age: event.target.value,
+            });
         }
         // this.setClearValue()
-      }
+    }
     handleSymptom = (symptomValue) => {
         console.log("symptomValue :" + symptomValue)
         // this.setState({symptom: symptomValue});
@@ -96,36 +97,36 @@ export default class Colonoscopy extends React.Component {
         // this.state
     }
 
-    setIfobtDataForServer(){
+    setIfobtDataForServer() {
         console.log("inside setIfobtDataForServer positiveIFOBT :" + this.state.positiveIFOBT)
         console.log("inside setIfobtDataForServer haveNBCSPOrOther :" + this.state.haveNBCSPOrOther)
-        
-        this.state.serverurl='http://128.250.143.10:8090/api/getIfobtCategory';
+
+        this.state.serverurl = 'http://128.250.143.10:8090/api/getIfobtCategory';
         return this.state.dataToServer = {
-            positiveIFOBT:1,
-            haveNBCSPOrOther:this.state.haveNBCSPOrOther,
+            positiveIFOBT: 1,
+            haveNBCSPOrOther: this.state.haveNBCSPOrOther,
         }
     }
 
-    setAnaemiaDataForServer(){
+    setAnaemiaDataForServer() {
         console.log("inside setAnaemiaDataForServer criticalFactor :" + this.state.criticalFactor)
         console.log("inside setAnaemiaDataForServer otherSymptoms :" + this.state.otherSymptoms)
         console.log("inside setAnaemiaDataForServer otherSymptoms :" + this.state.likelyCause)
-        this.state.serverurl='http://128.250.143.10:8090/api/getAnaemiaCategory';
+        this.state.serverurl = 'http://128.250.143.10:8090/api/getAnaemiaCategory';
         return this.state.dataToServer = {
-            anaemia:1,
-            criticalFactor:this.state.criticalFactor,
-            otherSymptoms:this.state.otherSymptoms,
-            likelyCause:this.state.likelyCause,
+            anaemia: 1,
+            criticalFactor: this.state.criticalFactor,
+            otherSymptoms: this.state.otherSymptoms,
+            likelyCause: this.state.likelyCause,
 
         }
     }
     getCategoryFromServer() {
-        
-        if(this.state.symptom=='Anaemia'){
+
+        if (this.state.symptom == 'Anaemia') {
             console.log("in if for Anaemia")
             this.setAnaemiaDataForServer()
-        }else if(this.state.symptom=='Ifobt'){
+        } else if (this.state.symptom == 'Ifobt') {
             console.log("in if for Ifobt")
             this.setIfobtDataForServer()
         }
@@ -133,7 +134,7 @@ export default class Colonoscopy extends React.Component {
 
 
         // const ifobturl = 'http://128.250.143.10:8090/api/getIfobtCategory';
-        const url= this.state.serverurl
+        const url = this.state.serverurl
         // const ifobturl = 'http://localhost:8090/api/getIfobtCategory';
 
         var request = new Request(url, {
@@ -164,7 +165,7 @@ export default class Colonoscopy extends React.Component {
             .catch((error) => {
                 document.write(error);
             });
-           
+
         console.log("inside getCategoryFromServer222")
         // alert("in")
 
@@ -187,15 +188,15 @@ export default class Colonoscopy extends React.Component {
 
     setCategorybasedOnServer(category) {
 
-        console.log("setCategorybasedOnServer **********: "+ category)
-        if (this.state.symptom=="Ifobt" && category == 1) {
+        console.log("setCategorybasedOnServer **********: " + category)
+        if (this.state.symptom == "Ifobt" && category == 1) {
             console.log("setCategorybasedOnServer" + category);
 
             this.setState({ categorySelected: <IfobtCategory1 /> })
             // this.state.categorySelected =<IfobtCategory1/>;
-        }else if (this.state.symptom=="Ifobt" && category == 2) {
+        } else if (this.state.symptom == "Ifobt" && category == 2) {
             this.setState({ categorySelected: <IfobtCategory2 /> })
-        }else if (this.state.symptom=="Anaemia" && (category == 1 || category == 2 || category == 3) ){
+        } else if (this.state.symptom == "Anaemia" && (category == 1 || category == 2 || category == 3)) {
             console.log("setCategorybasedOnServer" + category);
 
             this.setState({ categorySelected: <AnaemiaCategory1 /> })
@@ -243,16 +244,16 @@ export default class Colonoscopy extends React.Component {
     }
 
     symptomsSwitch(param) {
-//         param.map((row, i) =>{
-// console.log("param element"+ row)
-//         })
+        //         param.map((row, i) =>{
+        // console.log("param element"+ row)
+        //         })
         console.log("param : " + this.state.symptom);
         switch (param) {
             case 'Ifobt':
                 // this.state.ifobtState = true;
                 return this.askIfobtQuestions()
             case 'Anaemia':
-            // <Anaemia onAnaemia={this.handleAnaemia} />;
+                // <Anaemia onAnaemia={this.handleAnaemia} />;
                 return this.askAnaemiaQuestions()
             default:
                 this.state.result = '<test />';
@@ -260,7 +261,7 @@ export default class Colonoscopy extends React.Component {
                 return this.state.result;
         }
     }
-    setLikelyCauseAnaemia(e){
+    setLikelyCauseAnaemia(e) {
         console.log("setLikelyCauseAnaemia :" + e.target.value);
         // this.setState
         this.setState({
@@ -270,7 +271,7 @@ export default class Colonoscopy extends React.Component {
 
     }
 
-    setOtherAnaemiaSympt(e){
+    setOtherAnaemiaSympt(e) {
         console.log("setOtherAnaemiaSympt :" + e.target.value);
         // this.setState
         this.setState({
@@ -280,77 +281,77 @@ export default class Colonoscopy extends React.Component {
         // this.setAllSelectedValues(e);
     }
 
-    setAnaemiaCritical(e){
+    setAnaemiaCritical(e) {
         console.log("setAnaemiaCritical :" + e.target.value);
-        
+
         this.setState({
             criticalFactor: e.target.value,
         });
 
         // this.setAllSelectedValues(e);
     }
-    
-    askAnaemiaQuestions(){
-       return  <div>
-        <div className="col-sm-12 App para-heddings">
-            <p className="">Anaemia</p>
-        </div>
-        <br />
 
-
-        <br/>
-
-        <div className="col-sm-12">
-            <label className="control-margin-lbl para-text"   > Does the patient have any other critical factor ? </label>
-        </div>
-        <div className="col-sm-4">
-            <div className="form-check form-check-inline" onChange={this.setAnaemiaCritical.bind(this)}>
-                <input className="form-check-input" type="radio" value="true" name="AnaemiaCritical" />
-                <label className="form-check-label" >Yes</label>
-                <input className="form-check-input" type="radio" value="false" name="AnaemiaCritical" />
-                <label className="form-check-label" >No</label></div>
-            <br></br>
-            <div className="validationMsg">
+    askAnaemiaQuestions() {
+        return <div>
+            <div className="col-sm-12 App para-heddings">
+                <p className="">Anaemia</p>
             </div>
-        </div>
-        <div className="col-sm-12">
-            <label className="control-margin-lbl para-text"   > Does the patient have one or more other symptoms? </label>
-        </div>
-        <div className="col-sm-4">
-            <div className="form-check form-check-inline" onChange={this.setOtherAnaemiaSympt.bind(this)}>
-                <input className="form-check-input" type="radio" value="true" name="OtherAnaemia" />
-                <label className="form-check-label" >Yes</label>
-                <input className="form-check-input" type="radio" value="false" name="OtherAnaemia" />
-                <label className="form-check-label" >No</label></div>
-            <br></br>
-            <div className="validationMsg">
-            </div>
-        </div>
+            <br />
 
-        <div className="col-sm-12">
-            <label className="control-margin-lbl para-text"   > Does the anaemia have any likely cause? </label>
-        </div>
-        <div className="col-sm-4">
-            <div className="form-check form-check-inline" onChange={this.setLikelyCauseAnaemia.bind(this)}>
-                <input className="form-check-input" type="radio" value="true" name="LikelyCause" />
-                <label className="form-check-label" >Yes</label>
-                <input className="form-check-input" type="radio" value="false" name="LikelyCause" />
-                <label className="form-check-label" >No</label></div>
-            <br></br>
-            <div className="validationMsg">
+
+            <br />
+
+            <div className="col-sm-12">
+                <label className="control-margin-lbl para-text"   > Does the patient have any other critical factor ? </label>
             </div>
+            <div className="col-sm-4">
+                <div className="form-check form-check-inline" onChange={this.setAnaemiaCritical.bind(this)}>
+                    <input className="form-check-input" type="radio" value="true" name="AnaemiaCritical" />
+                    <label className="form-check-label" >Yes</label>
+                    <input className="form-check-input" type="radio" value="false" name="AnaemiaCritical" />
+                    <label className="form-check-label" >No</label></div>
+                <br></br>
+                <div className="validationMsg">
+                </div>
+            </div>
+            <div className="col-sm-12">
+                <label className="control-margin-lbl para-text"   > Does the patient have one or more other symptoms? </label>
+            </div>
+            <div className="col-sm-4">
+                <div className="form-check form-check-inline" onChange={this.setOtherAnaemiaSympt.bind(this)}>
+                    <input className="form-check-input" type="radio" value="true" name="OtherAnaemia" />
+                    <label className="form-check-label" >Yes</label>
+                    <input className="form-check-input" type="radio" value="false" name="OtherAnaemia" />
+                    <label className="form-check-label" >No</label></div>
+                <br></br>
+                <div className="validationMsg">
+                </div>
+            </div>
+
+            <div className="col-sm-12">
+                <label className="control-margin-lbl para-text"   > Does the anaemia have any likely cause? </label>
+            </div>
+            <div className="col-sm-4">
+                <div className="form-check form-check-inline" onChange={this.setLikelyCauseAnaemia.bind(this)}>
+                    <input className="form-check-input" type="radio" value="true" name="LikelyCause" />
+                    <label className="form-check-label" >Yes</label>
+                    <input className="form-check-input" type="radio" value="false" name="LikelyCause" />
+                    <label className="form-check-label" >No</label></div>
+                <br></br>
+                <div className="validationMsg">
+                </div>
+            </div>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    </div>
     }
-    askIfobtQuestions(){
+    askIfobtQuestions() {
 
         return <div>
-                    <div className="col-sm-12 App para-heddings">
-                        <p className="">iFOBT</p>
-                    </div>
-                    <br />
-                    {/* <div className="col-sm-12">
+            <div className="col-sm-12 App para-heddings">
+                <p className="">iFOBT</p>
+            </div>
+            <br />
+            {/* <div className="col-sm-12">
                         <label className="control-margin-lbl para-text"   > Does the patient have an NBCSP or other indication? </label>
                     </div>
                     <div className="col-sm-4">
@@ -363,10 +364,10 @@ export default class Colonoscopy extends React.Component {
                         <div className="validationMsg">
                         </div>
                     </div> */}
-                            {/* <Error name="NBCSP" /> */}
+            {/* <Error name="NBCSP" /> */}
 
             <div className="col-sm-12">
-            <label className="control-margin-lbl para-text"   > Does the patient have an NBCSP or other indication? </label>
+                <label className="control-margin-lbl para-text"   > Does the patient have an NBCSP or other indication? </label>
             </div>
             <div className="col-sm-4">
                 <div className="form-check form-check-inline" onChange={this.setNbcsp.bind(this)}>
@@ -378,25 +379,25 @@ export default class Colonoscopy extends React.Component {
                 <div className="validationMsg">
                 </div>
             </div>
-                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                </div >
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div >
     }
     render() {
 
         // const grterThn = "<";
         const Error = ({ name }) => (
             <Field
-              name={name}
-              subscribe={{ touched: true, error: true }}
-              render={({ meta: { touched, error } }) =>
-                touched && error ? <span>{error}</span> : null
-              }
+                name={name}
+                subscribe={{ touched: true, error: true }}
+                render={({ meta: { touched, error } }) =>
+                    touched && error ? <span>{error}</span> : null
+                }
             />)
 
         return (
             <Wizard
-            initialValues={{ employed: true }}
-            // onSubmit={this.onSubmit.bind(this)}
+                initialValues={{ employed: true }}
+                // onSubmit={this.onSubmit.bind(this)}
                 getCategoryFromServer={this.getCategoryFromServer.bind(this)}
             >
                 <Wizard.Page>
@@ -409,26 +410,27 @@ export default class Colonoscopy extends React.Component {
                     <Guideline />
 
                 </Wizard.Page>
-                {/* <Wizard.Page>
-               
+                <Wizard.Page>
+                    < PatientInfo />
 
-               
 
-                </Wizard.Page> */}
+
+
+                </Wizard.Page>
                 {/* validate={this.validate}> */}
                 <Wizard.Page >
                     {/* Commenting */}
-                    <Symptoms   validate={values => {
-                const errors = {}
-                console.log("in validation Symptoms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111 :" +this.state.age)
-                if (this.state.age == '') {
-                    alert("In error age")
-                    errors.ageColumn = 'Please enter an appropriate value'
-                  }
-                return errors
-                      }}
-                      onSelectSymptom={this.handleSymptom} />
-                   
+                    <Symptoms validate={values => {
+                        const errors = {}
+                        console.log("in validation Symptoms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111 :" + this.state.age)
+                        if (this.state.age == '') {
+                            alert("In error age")
+                            errors.ageColumn = 'Please enter an appropriate value'
+                        }
+                        return errors
+                    }}
+                        onSelectSymptom={this.handleSymptom} />
+
                 </Wizard.Page>
 
 
@@ -442,7 +444,7 @@ export default class Colonoscopy extends React.Component {
 
                 <Wizard.Page>
 
-                   {this.state.categorySelected}
+                    {this.state.categorySelected}
 
                 </Wizard.Page>
                 {/* <Wizard.Page> */}
@@ -457,7 +459,7 @@ export default class Colonoscopy extends React.Component {
 
 
         );
-        
+
     }
 }
 

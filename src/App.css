@@ -181,6 +181,28 @@ tr.h{
   align-self: center;   
   border-radius: 20px 20px 20px 20px;   
 }
+
+.button-guideline {
+  /* table-layout: fixed; */
+  widows: fixed;
+  width: 400px; 
+  height: 70px;
+  align-self: right;   
+  border-radius: 10px 10px 10px 10px;   
+}
+.button-AddSub {
+  /* table-layout: fixed; */
+  widows: fixed;
+  width: 50px; 
+  height: 50px;
+  align-self: center;   
+  /* border-radius: 10px 10px 10px 10px;    */
+}
+div {
+
+  margin-top: 15px;
+  
+  }
 .dorp-box{
   width: 300px;
  border-radius: 5px 5px 5px 5px;
