@@ -21,6 +21,8 @@ export default class PatientInfo extends React.Component {
             hideIfPositiveIBD: true,
             positiveCalprotectin: '',
             positiveCRPESR: '',
+            positiveAlbumin: '',
+            positiveSigmoidoscopy: '',
 
         }
     }
@@ -127,6 +129,9 @@ export default class PatientInfo extends React.Component {
         } else {
             this.setState({ hideIfPositiveIBD: true })
             this.state.positiveCalprotectin = ''
+            this.state.positiveCRPESR = ''
+            this.state.positiveAlbumin = ''
+            this.state.positiveSigmoidoscopy = ''
         }
 
     }
@@ -145,6 +150,17 @@ export default class PatientInfo extends React.Component {
 
     }
 
+    setAlbumin(event) {
+        this.setState({
+            positiveAlbumin: event.target.value
+        })
+    }
+
+    setSigmoidoscopy(event) {
+        this.setState({
+            positiveSigmoidoscopy: event.target.value
+        })
+    }
     render() {
 
 
@@ -167,7 +183,7 @@ export default class PatientInfo extends React.Component {
 
                 </div>
                 <div>
-                    <div>
+                    <div className="div-top">
                         <h5>INDICATION A: Symptoms or investigations </h5>
                     </div>
                     <div onChange={this.setIFOBT.bind(this)}>
@@ -178,7 +194,7 @@ export default class PatientInfo extends React.Component {
                         <label className="form-check-label" >Yes</label>
                     </div>
 
-                    <div className={this.state.hideNBCSP ? "hidden" : ""} onChange={this.setIfobtTNBSP.bind(this)}>
+                    <div className={this.state.hideNBCSP ? "hidden" : "div-top"} onChange={this.setIfobtTNBSP.bind(this)}>
                         <label>NBCSP or other indication</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.positiveNBCSP == 1 ? true : false} value="1" name="optionNbcsp" />
                         <label className="form-check-label" >No</label><br />
@@ -186,28 +202,28 @@ export default class PatientInfo extends React.Component {
                         <label className="form-check-label" >Yes</label>
                     </div>
 
-                    <div onChange={this.setAnaemia.bind(this)}>
+                    <div className="div-top" onChange={this.setAnaemia.bind(this)}>
                         <label>Anaemia</label><br />
-                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 1 ? true : false} value="1" name="optionIfobt" />
+                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 1 ? true : false} value="1" name="optionAnaemia" />
                         <label className="form-check-label" >No</label><br />
-                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 2 ? true : false} value="2" name="optionIfobt" />
+                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 2 ? true : false} value="2" name="optionAnaemia" />
                         <label className="form-check-label" >Yes, no likely cause</label><br />
-                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 3 ? true : false} value="3" name="optionIfobt" />
+                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 3 ? true : false} value="3" name="optionAnaemia" />
                         <label className="form-check-label" >Yes, likely non-gastrointestinal tract cause</label><br />
-                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 4 ? true : false} value="4" name="optionIfobt" />
+                        <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 4 ? true : false} value="4" name="optionAnaemia" />
                         <label className="form-check-label" >Yes, untreated likely non-gastrointestinal tract cause such as menorrhagia/diet</label>
                     </div>
 
-                    <div onChange={this.setRectalBleeding.bind(this)}>
+                    <div className="div-top" onChange={this.setRectalBleeding.bind(this)}>
                         <label>Rectal bleeding</label><br />
-                        <input className="form-check-input" type="radio" checked={this.state.rectalBOptions == 1 ? true : false} value="1" name="optionIfobt" />
+                        <input className="form-check-input" type="radio" checked={this.state.rectalBOptions == 1 ? true : false} value="1" name="optionRectalB" />
                         <label className="form-check-label" >No</label><br />
-                        <input className="form-check-input" type="radio" checked={this.state.rectalBOptions == 2 ? true : false} value="2" name="optionIfobt" />
+                        <input className="form-check-input" type="radio" checked={this.state.rectalBOptions == 2 ? true : false} value="2" name="optionRectalB" />
                         <label className="form-check-label" >Yes, ≤ 12 months</label><br />
-                        <input className="form-check-input" type="radio" checked={this.state.rectalBOptions == 3 ? true : false} value="3" name="optionIfobt" />
+                        <input className="form-check-input" type="radio" checked={this.state.rectalBOptions == 3 ? true : false} value="3" name="optionRectalB" />
                         <label className="form-check-label" >Yes, > 12 months, occasional</label>
                     </div>
-                    <div className={this.state.hideCause ? "hidden" : ""} onChange={this.setRBCause.bind(this)}>
+                    <div className={this.state.hideCause ? "hidden" : "div-top"} onChange={this.setRBCause.bind(this)}>
                         <label>Cause</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.positiveCause == 1 ? true : false} value="1" name="optionCause" />
                         <label className="form-check-label" >No likely anorectal cause found (such as normal rigid/flexible sigmoidoscopy) or
@@ -217,7 +233,7 @@ export default class PatientInfo extends React.Component {
                                 sigmoidoscopy such as haemorrhoids</label>
                     </div>
 
-                    <div onChange={this.setAltBwlHbt.bind(this)}>
+                    <div className="div-top" onChange={this.setAltBwlHbt.bind(this)}>
                         <label>Altered bowel habit</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.altBwlHbtOptions == 1 ? true : false} value="1" name="optionAltBwlHbt" />
                         <label className="form-check-label" >No</label><br />
@@ -229,7 +245,7 @@ export default class PatientInfo extends React.Component {
                         <label className="form-check-label" >Yes, > 12 months</label>
                     </div>
 
-                    <div onChange={this.setAbdPain.bind(this)}>
+                    <div className="div-top" onChange={this.setAbdPain.bind(this)}>
                         <label>Abdominal pain (unexplained)</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.abdPainOptions == 1 ? true : false} value="1" name="optionAbdPain" />
                         <label className="form-check-label" >No</label><br />
@@ -239,7 +255,7 @@ export default class PatientInfo extends React.Component {
                         <label className="form-check-label" >Yes, ≥ 6 weeks</label>
                     </div>
 
-                    <div onChange={this.setWeightLoss.bind(this)}>
+                    <div className="div-top" onChange={this.setWeightLoss.bind(this)}>
                         <label>Weight loss (unexplained)</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.positiveWeightLoss == 1 ? true : false} value="1" name="optionWeightLoss" />
                         <label className="form-check-label" >No</label><br />
@@ -247,7 +263,7 @@ export default class PatientInfo extends React.Component {
                         <label className="form-check-label" >Yes</label>
                     </div>
 
-                    <div onChange={this.setMassPalpable.bind(this)}>
+                    <div className="div-top" onChange={this.setMassPalpable.bind(this)}>
                         <label>Mass palpable (abdominal or rectal) or present on rigid/flexible sigmoidoscopy</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.positiveMassPalpable == 1 ? true : false} value="1" name="optionMassPalpable" />
                         <label className="form-check-label" >No</label><br />
@@ -255,7 +271,7 @@ export default class PatientInfo extends React.Component {
                         <label className="form-check-label" >Yes</label>
                     </div>
 
-                    <div onChange={this.setPossibleIBD.bind(this)}>
+                    <div className="div-top" onChange={this.setPossibleIBD.bind(this)}>
                         <label>Possible inflammatory bowel disease (IBD)</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.positivePossibleIBD == 1 ? true : false} value="1" name="optionPossibleIBD" />
                         <label className="form-check-label" >No</label><br />
@@ -263,22 +279,53 @@ export default class PatientInfo extends React.Component {
                         <label className="form-check-label" >Yes</label>
                     </div>
 
-                    <div className={this.state.hideIfPositiveIBD ? "hidden" : ""} >
+                    <div className={this.state.hideIfPositiveIBD ? "hidden" : "div-top"} >
                         <label>Make a selection for each of the following:</label><br />
-                        <div onChange={this.setCalprotectin.bind(this)}>
-                            <input className="form-check-input" type="radio" checked={this.state.positiveCalprotectin == 1 ? true : false} value="1" name="optionCalprotectin" />
-                            <label className="form-check-label" >calprotectin (+)</label> &nbsp; &nbsp;
-                        <input className="form-check-input" type="radio" checked={this.state.positiveCalprotectin == 2 ? true : false} value="2" name="optionCalprotectin" />
-                            <label className="form-check-label" >calprotectin (-)</label>
+                        <div className="row" onChange={this.setCalprotectin.bind(this)}>
+                            <div className="col-sm-4 ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveCalprotectin == 1 ? true : false} value="1" name="optionCalprotectin" />
+                                <label className="form-check-label" >calprotectin (+)</label>
+                            </div>
+                            <div className="col-sm-6 ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveCalprotectin == 2 ? true : false} value="2" name="optionCalprotectin" />
+                                <label className="form-check-label" >calprotectin (-)</label>
+                            </div>
                         </div>
 
-                        <div onChange={this.setCRPESR.bind(this)}>
-                            <input className="form-check-input" type="radio" checked={this.state.positiveCRPESR == 1 ? true : false} value="1" name="optionCRPESR" />
-                            <label className="form-check-label" >raised CRP or ESR</label> &nbsp; &nbsp;
-                        <input className="form-check-input" type="radio" checked={this.state.positiveCRPESR == 2 ? true : false} value="2" name="optionCRPESR" />
-                            <label className="form-check-label" >normal CRP and ESR</label>
+                        <div className="row" onChange={this.setCRPESR.bind(this)}>
+                            <div className="col-sm-4 ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveCRPESR == 1 ? true : false} value="1" name="optionCRPESR" />
+                                <label className="form-check-label" >raised CRP or ESR</label>
+                            </div>
+                            <div className="col-sm-6 ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveCRPESR == 2 ? true : false} value="2" name="optionCRPESR" />
+                                <label className="form-check-label" >normal CRP and ESR</label>
+                            </div>
+                        </div>
+
+                        <div className="row" onChange={this.setAlbumin.bind(this)}>
+                            <div className="col-sm-4 ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveAlbumin == 1 ? true : false} value="1" name="optionAlbumin" />
+                                <label className="form-check-label" >low albumin</label>
+                            </div>
+                            <div className="col-sm-6 ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveAlbumin == 2 ? true : false} value="2" name="optionAlbumin" />
+                                <label className="form-check-label" >low albumin</label>
+                            </div>
+                        </div>
+
+                        <div className="row" onChange={this.setSigmoidoscopy.bind(this)}>
+                            <div className="col-sm-4  ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveSigmoidoscopy == 1 ? true : false} value="1" name="optionSigmoidoscopy" />
+                                <label className="form-check-label" >abnormal rigid    /flexible sigmoidoscopy</label>
+                            </div>
+                            <div className="col-sm-6 ">
+                                <input className="form-check-input" type="radio" checked={this.state.positiveSigmoidoscopy == 2 ? true : false} value="2" name="optionSigmoidoscopy" />
+                                <label className="form-check-label" id="sigmoidoscopy" >specialist assessment (including normal rigid/flexible sigmoidoscopy)</label>
+                            </div>
                         </div>
                     </div>
+
 
                 </div>
             </div>
