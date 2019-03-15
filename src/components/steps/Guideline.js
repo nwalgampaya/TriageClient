@@ -12,7 +12,7 @@ export default class Guideline extends React.Component {
             <div>
                 {/* <div className="row"> */}
                 <div className="col-sm-12 App">
-                    <p className="para-heddings">Colonoscopy Guideline Information</p>
+                    <p className="para-headings">Colonoscopy Guideline Information</p>
                 </div>
 
                 <div className="row">
@@ -32,7 +32,7 @@ export default class Guideline extends React.Component {
                             <li>The timing of surveillance or family history colonoscopies are recommended as per algorithms based on NHMRC guidelines (2005 and 2011).
                            </li>
                         </ul>
-                        <br /><br />
+                        <br />
                     </div>
                     <div className="row container">
                         <div className="col-sm-1 "></div>
@@ -48,7 +48,7 @@ export default class Guideline extends React.Component {
                     </div>
                     <br /><br /> <br /><br />
                     <div className="col-sm-12 App guideline-para-text">
-                        <h5><b>References</b></h5>
+                        <h6><b>References</b></h6>
                     </div>
                     <div className="col-sm-12 App guideline-para-text">
                         <ol>

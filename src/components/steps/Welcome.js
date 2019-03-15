@@ -33,8 +33,8 @@ export default class Welcome extends React.Component {
                 <div>
                     <p className="important-info">Important information:</p>
                     <ul>
-                        <li> This tool is designed to be used by health professional..</li>
-                        <li> The colonoscopy categorisation rules implemented by this tool are detailed in the document <br />
+                        <li> This tool is designed to be used by health professional.</li>
+                        <li> The colonoscopy categorisation rules implemented by this tool are detailed in the document&nbsp;
                             <a target="_blank" href="https://www2.health.vic.gov.au/about/publications/policiesandguidelines/colonoscopy-categorisation-guidelines"><i>Colonoscopy Categorisation Guidelines 2017.</i></a></li>
                     </ul>
                 </div>

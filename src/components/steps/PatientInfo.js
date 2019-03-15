@@ -167,7 +167,9 @@ export default class PatientInfo extends React.Component {
         return (
             <div>
                 <div>
-                    <h5>Patient Information</h5>
+                    <div className="para-headings">
+                        <p>Patient Information</p>
+                    </div>
 
                     <div className="row col-sm-4 ">
                         <button type="button" className="App button-AddSub text-button" onClick={this.substractAge}>-</button>
@@ -184,7 +186,7 @@ export default class PatientInfo extends React.Component {
                 </div>
                 <div>
                     <div className="div-top">
-                        <h5>INDICATION A: Symptoms or investigations </h5>
+                        <h5>Indication A: Symptoms or investigations </h5>
                     </div>
                     <div onChange={this.setIFOBT.bind(this)}>
                         <label>Positive immunohistochemical faecal occult blood test (iFOBT(+))</label><br />
@@ -193,7 +195,7 @@ export default class PatientInfo extends React.Component {
                         <input className="form-check-input" type="radio" checked={this.state.positiveIFOBT == 2 ? true : false} value="2" name="optionIfobt" />
                         <label className="form-check-label" >Yes</label>
                     </div>
-
+                    <hr></hr>
                     <div className={this.state.hideNBCSP ? "hidden" : "div-top"} onChange={this.setIfobtTNBSP.bind(this)}>
                         <label>NBCSP or other indication</label><br />
                         <input className="form-check-input" type="radio" checked={this.state.positiveNBCSP == 1 ? true : false} value="1" name="optionNbcsp" />
