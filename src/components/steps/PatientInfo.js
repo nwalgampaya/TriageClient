@@ -23,7 +23,12 @@ export default class PatientInfo extends React.Component {
             positiveCRPESR: '',
             positiveAlbumin: '',
             positiveSigmoidoscopy: '',
-
+            positiveRecentChangeIBD: '',
+            positiveFerritin: '',
+            positiveUnknownOrigin: '',
+            positiveAbnormalImg: '',
+            optionSurveillanceCol: '',
+            optionTherapeuticPoly: '',
         }
     }
 
@@ -159,6 +164,41 @@ export default class PatientInfo extends React.Component {
     setSigmoidoscopy(event) {
         this.setState({
             positiveSigmoidoscopy: event.target.value
+        })
+    }
+
+    setRecentChangeIBD(event) {
+        this.setState({
+            positiveRecentChangeIBD: event.target.value
+        })
+    }
+
+    setFerritin(event) {
+        this.setState({
+            positiveFerritin: event.target.value
+        })
+    }
+    setUnknownOrigin(event) {
+        this.setState({
+            positiveUnknownOrigin: event.target.value
+        })
+    }
+
+    setAbnormalImg(event) {
+        this.setState({
+            positiveAbnormalImg: event.target.value
+        })
+    }
+
+    setSurveillanceCol(event) {
+        this.setState({
+            optionSurveillanceCol: event.target.value
+        })
+    }
+
+    setTherapeuticPoly(event) {
+        this.setState({
+            optionTherapeuticPoly: event.target.value
         })
     }
     render() {
@@ -329,6 +369,64 @@ export default class PatientInfo extends React.Component {
                     </div>
 
 
+                    <div className="div-top" onChange={this.setRecentChangeIBD.bind(this)}>
+                        <label>Recent change in treatment for established IBD</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveRecentChangeIBD == 1 ? true : false} value="1" name="optionRecentChangeIBD" />
+                        <label className="form-check-label" >No</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveRecentChangeIBD == 2 ? true : false} value="2" name="optionRecentChangeIBD" />
+                        <label className="form-check-label" >Yes</label>
+                    </div>
+
+                    <div className="div-top" onChange={this.setFerritin.bind(this)}>
+                        <label>Low MCV/MCH or ferritin</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveFerritin == 1 ? true : false} value="1" name="optionFerritin" />
+                        <label className="form-check-label" >No</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveFerritin == 2 ? true : false} value="2" name="optionFerritin" />
+                        <label className="form-check-label" >Yes</label>
+                    </div>
+
+                    <div className="div-top" onChange={this.setUnknownOrigin.bind(this)}>
+                        <label>Primary of unknown origin</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveUnknownOrigin == 1 ? true : false} value="1" name="optionUnknownOrigin" />
+                        <label className="form-check-label" >No</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveUnknownOrigin == 2 ? true : false} value="2" name="optionUnknownOrigin" />
+                        <label className="form-check-label" >Yes</label>
+                    </div>
+
+                    <div className="div-top" onChange={this.setAbnormalImg.bind(this)}>
+                        <label>Abnormal imaging</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveAbnormalImg == 1 ? true : false} value="1" name="optionAbnormalImg" />
+                        <label className="form-check-label" >No</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveAbnormalImg == 2 ? true : false} value="2" name="optionAbnormalImg" />
+                        <label className="form-check-label" >Yes, likely colorectal cancer</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.positiveAbnormalImg == 3 ? true : false} value="3" name="optionAbnormalImg" />
+                        <label className="form-check-label" >Yes, unlikely colorectal cancer </label>
+                    </div>
+                    <div className="div-top">
+                        <h5>INDICATION B: Surveillance or on the basis of family history </h5>
+                    </div>INDICATION C: Therapeutic
+                    <div className="div-top" onChange={this.setSurveillanceCol.bind(this)}>
+                        <label>Surveillance colonoscopy as per NHMRC guidelines</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.optionSurveillanceCol == 1 ? true : false} value="1" name="optionSurveillanceCol" />
+                        <label className="form-check-label" >No</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.optionSurveillanceCol == 2 ? true : false} value="2" name="optionSurveillanceCol" />
+                        <label className="form-check-label" >Yes, overdue by > 60 days</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.optionSurveillanceCol == 3 ? true : false} value="3" name="optionSurveillanceCol" />
+                        <label className="form-check-label" >Yes, not overdue by > 60 days </label>
+                    </div>
+                    <div className="div-top">
+                        <h5>INDICATION C: Therapeutic</h5>
+                    </div>
+
+                    <div className="div-top" onChange={this.setTherapeuticPoly.bind(this)}>
+                        <label>Therapeutic polypectomy</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.optionTherapeuticPoly == 1 ? true : false} value="1" name="optionTherapeuticPoly" />
+                        <label className="form-check-label" >No</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.optionTherapeuticPoly == 2 ? true : false} value="2" name="optionTherapeuticPoly" />
+                        <label className="form-check-label" >Yes, ≥ 2 cm</label><br />
+                        <input className="form-check-input" type="radio" checked={this.state.optionTherapeuticPoly == 3 ? true : false} value="3" name="optionTherapeuticPoly" />
+                        <label className="form-check-label" >Yes, &gt; 2 cm </label>
+                    </div>
                 </div>
             </div>
 
