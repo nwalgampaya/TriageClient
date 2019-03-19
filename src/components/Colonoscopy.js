@@ -14,6 +14,9 @@ import IfobtCategory2 from "./category/colonoscopy/IfobtCategory2.js";
 import AnaemiaCategory1 from "./category/colonoscopy/AnaemiaCategory1.js";
 import { Field } from 'react-final-form'
 import PatientInfo from "./steps/PatientInfo.js";
+import ColCategorisation from "./steps/ColCategorisation.js";
+// import ColCategorisation from "./steps/ColCategorisation.js";
+
 // import Ifobt from '../components/steps/Ifobt.js'
 // import Anaemia from './steps/Anaemia.js'
 
@@ -417,9 +420,12 @@ export default class Colonoscopy extends React.Component {
 
 
                 </Wizard.Page>
+
+                <Wizard.Page>
+                    <ColCategorisation />
+                </Wizard.Page>
                 {/* validate={this.validate}> */}
-                <Wizard.Page >
-                    {/* Commenting */}
+                {/* <Wizard.Page >
                     <Symptoms validate={values => {
                         const errors = {}
                         console.log("in validation Symptoms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111 :" + this.state.age)
@@ -446,7 +452,7 @@ export default class Colonoscopy extends React.Component {
 
                     {this.state.categorySelected}
 
-                </Wizard.Page>
+                </Wizard.Page> */}
                 {/* <Wizard.Page> */}
                 {/* {this.state.categorySelected} */}
                 {/* <IfobtCategory1/> */}

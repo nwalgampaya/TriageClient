@@ -185,8 +185,8 @@ tr.h{
 .button-guideline {
   /* table-layout: fixed; */
   widows: fixed;
-  width: 300px; 
-  height: 90px;
+  width: 290px; 
+  height: 70px;
   align-self: right;   
   border-radius: 10px 10px 10px 10px;   
 }

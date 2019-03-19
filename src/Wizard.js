@@ -183,13 +183,7 @@ export default class Wizard extends React.Component {
                 </button>
 
                     )} */}
-                    {(isLastPage) && (
-                      <button className="btn btn-primary pull-right" type="button" onClick={this.endSession}>
-                        End session
-                </button>
 
-
-                    )}
                     {/* {page > 0 && (
                       <button className="btn btn-primary" styles={{ float: 'left', paddingLeft: '10px' }} type="button" onClick={this.previous}>
                         Previous
@@ -200,10 +194,11 @@ export default class Wizard extends React.Component {
 
                     {/* Invisible button to get the next button allignment correctly */}
                     {page > 0 && (<button className="invisible" type="button" ></button>)}
+                    {page == 3 && (<button className="invisible" type="button" > Invisible Invisible Invisible Invisible more </button>)}
 
-                    {page == 3 && (<button className="btn btn-primary" type="button" onClick={this.previous}> Back</button>)}
+                    {page == 3 && (<button className="button-guideline text-button" type="button" onClick={this.previous}> Go Back</button>)}
 
-                    {page == 2 && (<button className="btn btn-primary pull-right" type="submit"  >Next</button>)}
+                    {/* {page == 2 && (<button className="btn btn-primary pull-right" type="submit"  >Next</button>)} */}
                     {/* {page ==3  &&(<button className="btn btn-primary pull-right" type="submit"  >Next</button>)}  */}
 
                     {/* {!page == 0 && !page == 1 && !isLastPage && <button className="btn btn-primary pull-right " type="submit">  Next  </button>} */}
@@ -211,12 +206,25 @@ export default class Wizard extends React.Component {
                       Start</button>
                     )} */}
                     {/* {(isLastPage ) && ( */}
-                    {/* {(page == 3 &&
-                      <button className="btn btn-primary pull-right" type="submit" disabled={submitting}>Next</button>
-                    )} */}
-                    {(page == 3 &&
-                      <button className="btn btn-primary pull-right" type="button" disabled={submitting} onClick={this.selectCategory}>Categorise colonoscopy</button>
+                    {page == 2 && (<button className="invisible" type="button" > Invisible Invisible Invisible Invisible more </button>)}
+
+                    {(page == 2 &&
+                      <button className="button-guideline text-button " type="submit" disabled={submitting}>Categorise colonoscopy</button>
                     )}
+                    {(page == 2 || page == 3) && (<button className="invisible" type="button" > Invisib</button>)}
+
+                    {(page == 3 || page == 2) && (
+                      <button className="button-guideline text-button " type="button" onClick={this.endSession}>
+                        End session
+                </button>
+                    )}
+
+                    {(page == 2 || page == 3) && (<button className="invisible" type="button" > Invisib</button>)}
+                    {(page == 2 || page == 3) && (<button className="invisible" type="button" > Invisib</button>)}
+
+                    {/* {(page == 2 &&
+                      <button className="btn btn-primary pull-right" type="button" disabled={submitting} onClick={this.selectCategory}>Categorise colonoscopy</button>
+                    )} */}
 
                   </div>
 
