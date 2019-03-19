@@ -185,17 +185,21 @@ tr.h{
 .button-guideline {
   /* table-layout: fixed; */
   widows: fixed;
-  width: 400px; 
-  height: 70px;
+  width: 300px; 
+  height: 90px;
   align-self: right;   
   border-radius: 10px 10px 10px 10px;   
 }
 .button-AddSub {
   /* table-layout: fixed; */
-  widows: fixed;
-  width: 50px; 
-  height: 50px;
-  align-self: center;   
+  /* widows: fixed; */
+  width: 35px; 
+  height: 35px;
+  margin: 4px 2px;
+  color: rgb(146, 166, 233);
+  font-size: 16px;
+  /* align-self: center;    */
+  /* text-align: start; */
   /* border-radius: 10px 10px 10px 10px;    */
 }
 .div-top{
@@ -239,6 +243,11 @@ table.pushright {
 } */
 /* padding-bottom: 5px;   */
 .guideline-para-text{
+  font-family: 'Calibri';
+  font-size: 16px;
+}
+
+.guideline-Ref-text{
   font-family: 'Calibri';
   font-size: 12px;
 }
@@ -286,3 +295,7 @@ table.pushright {
   right: 0;
 }
 /* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css *//* Colonoscopy css */
+
+.padding-Radio{
+  padding-left: 35px
+}

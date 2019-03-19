@@ -35,11 +35,11 @@ export default class Guideline extends React.Component {
                         <br />
                     </div>
                     <div className="row container">
-                        <div className="col-sm-1 "></div>
+                        <div className="col-sm-4 "></div>
                         <div className="col-sm-4 ">
                             <button className="App button-guideline text-button">Enter patient data</button>
                         </div>
-                        <div className="col-sm-1 "></div>
+                        {/* <div className="col-sm-1 "></div> */}
                         <div className="col-sm-4 ">
                             <button className="App button-guideline text-button">End session</button>
 
@@ -50,7 +50,7 @@ export default class Guideline extends React.Component {
                     <div className="col-sm-12 App guideline-para-text">
                         <h6><b>References</b></h6>
                     </div>
-                    <div className="col-sm-12 App guideline-para-text">
+                    <div className="col-sm-12 App guideline-Ref-text">
                         <ol>
                             <li>
                                 Barclay K, Cancer Council Australia Surveillance Colonoscopy Guidelines Working Party.  <a target="_blank" href="https://www.cancer.org.au/content/pdf/wiki/Algorithm_for_Colonoscopic_Surveillance_Intervals_-_Adenomas.pdf"> Algorithm for colonoscopic surveillance intervals – adenomas 2013</a>. Accessed 04/02/2016.
