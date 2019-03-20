@@ -217,13 +217,13 @@ input[type="radio"],
 input.radio,
 input.checkbox {
 vertical-align:text-top;
-width:13px;
-height:13px;
+width:16px;
+height:20px;
 padding:0;
-margin:0;
+margin:7px;
 position:relative;
 overflow:hidden;
-top:2px;
+top:-4px;
 }
 
 label {

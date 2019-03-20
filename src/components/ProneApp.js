@@ -60,7 +60,7 @@ export default class ProneApp extends Component {
       returnArrayFromChild: [],
       duplArryFromChild: [],
       specificComplaintArr: '',
-      multiComplaint:[],
+      multiComplaint: [],
     };
 
   }
@@ -175,11 +175,11 @@ export default class ProneApp extends Component {
     console.log("in POST")
     method: 'POST';
     // this.state.specificComplaintArr= this.state.returnArrayFromChild
-    this.state.multiComplaint= this.state.returnArrayFromChild
+    this.state.multiComplaint = this.state.returnArrayFromChild
 
     // this.state.specificComplaintArr.map((specialProfArr, i) => {
     this.state.multiComplaint.map((specialProfArr, i) => {
-      this.state.specificComplaintArr=  this.state.specificComplaintArr + specialProfArr+','
+      this.state.specificComplaintArr = this.state.specificComplaintArr + specialProfArr + ','
       console.log("+++++++++++++++++++++++++++++++++" + this.state.specificComplaintArr)
     })
 
@@ -256,7 +256,7 @@ export default class ProneApp extends Component {
 
 
   componentDidMount() {
-    this.state.hideSpecialty=true
+    this.state.hideSpecialty = true
     console.log("SEL PROF : " + this.state.selectedProfession)
 
     // const urlProfession = "http://128.250.143.10:8080/ProneSpringBoot/api/professions/";
@@ -544,7 +544,7 @@ export default class ProneApp extends Component {
         hideSpecialty: true,
       }),
 
-      this.state.specificComplaintArr='',
+      this.state.specificComplaintArr = '',
       console.log("In end session *******88")
   }
   onSubmit(e) {
@@ -565,11 +565,11 @@ export default class ProneApp extends Component {
     // alert("Form has errors.");
     //  }
   }
-  removeElementFromArray= (noOfClicks) => {
+  removeElementFromArray = (noOfClicks) => {
 
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> :" + noOfClicks )
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> :" + noOfClicks)
 
-    this.state.returnArrayFromChild.splice(noOfClicks+1,1)
+    this.state.returnArrayFromChild.splice(noOfClicks + 1, 1)
 
     this.state.returnArrayFromChild.map((speccompmulti, i) => {
       console.log("**********************************************************************###### PARENT REMOVE" + speccompmulti)
@@ -610,15 +610,15 @@ export default class ProneApp extends Component {
 
     // this.state.duplArryFromChild.splice(noOfClicks+1,1)
 
-    for(var i = noOfClicks; i < this.state.returnArrayFromChild.length; i++){
+    for (var i = noOfClicks; i < this.state.returnArrayFromChild.length; i++) {
       // var index = this.state.returnArrayFromChild[i];
-      if(i>noOfClicks){
+      if (i > noOfClicks) {
 
-        returnArrayFromChild: this.state.returnArrayFromChild.splice(i,1)
+        returnArrayFromChild: this.state.returnArrayFromChild.splice(i, 1)
       }
       // console.log("&&&&&&&&&&&&&& for : " +index)
       // this.splice(index, 1);
-    } 
+    }
 
 
     this.state.returnArrayFromChild.map((speccompmulti, i) => {
@@ -659,7 +659,7 @@ export default class ProneApp extends Component {
         <Wizard.Page validate={values => {
           const errors = {}
           console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111")
-            
+
           // if (!this.state.age) {
           //   errors.age = 'Please enter an appropriate value'
           // }else if (this.state.age) {
@@ -710,13 +710,13 @@ export default class ProneApp extends Component {
           //   // alert("In error")
           //   errors.complaintTypecolumn = 'Please enter an appropriate value'
           // }
-          
+
           // if (this.state.specificComplaint==111) {
-          if ( this.state.returnArrayFromChild=="") {
+          if (this.state.returnArrayFromChild == "") {
             // alert("In error")
-            console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% if"+ this.state.returnArrayFromChild)
+            console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% if" + this.state.returnArrayFromChild)
             errors.specificComplaintcolumn = 'Please enter an appropriate value'
-          }else{
+          } else {
             console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% else")
             // errors.specificComplaintcolumn =''
           }
@@ -728,7 +728,7 @@ export default class ProneApp extends Component {
             {/* <table>
               <tbody> */}
 
-                {/* <tr>
+            {/* <tr>
 
                   <td> <label  className="control-margin-lbl"> Age </label></td>
                   <td> <div onChange={this.setAge.bind(this)}><input type="text"  className="box-text form-control" name="age" value ={this.state.clearvalues==0?this.state.age:''}></input> 
@@ -741,18 +741,18 @@ export default class ProneApp extends Component {
                 </tr> <br></br>
                 <tr><td></td></tr> */}
 
-                {/* Age Select Box Start */}
-                {/* <tr>
+            {/* Age Select Box Start */}
+            {/* <tr>
                   <td>
                   <td>
                   </td> */}
-                  <div class="row">
+            <div class="row">
               <div class="col-sm-8">
-                     <div class="row">
-                <div className="col-sm-6">
+                <div class="row">
+                  <div className="col-sm-6">
                     <label className="control-margin-lbl"> Age: </label>
-                    </div>
-                    <div className="col-sm-4">   
+                  </div>
+                  <div className="col-sm-4">
                     <select className="form-control dorp-box" value={this.state.age} onChange={this.setAge.bind(this)} name="ageColumn">{
                       this.state.ageData.map((ageGroup, i) => {
 
@@ -766,85 +766,85 @@ export default class ProneApp extends Component {
                     <div className="validationMsg">
                       <Error name="ageColumn" />
                     </div>
-                    </div></div></div></div>
-                  {/* </td>
+                  </div></div></div></div>
+            {/* </td>
                 </tr> 
                   </tbody>
               </table> */}
-                <br />
-                {/* Age Select box end */}
+            <br />
+            {/* Age Select box end */}
 
 
-                {/* <tr>
+            {/* <tr>
                   <td>
                   <td>
                      </td> */}
-                      <div class="row">
+            <div class="row">
               <div class="col-sm-8">
-                     <div class="row">
-                <div className="col-sm-6">
-                     <label className="control-margin-lbl"   > Sex: </label>
-                     </div>
-                     <div className="col-sm-4">
-                     <div className="form-check form-check-inline" onChange={this.setSex.bind(this)}>
-                    <input className="form-check-input" type="radio" value="1" checked={this.state.sex == 1 ? true : false} name="sex" />
-                    <label className="form-check-label" >Male</label>
-                    <input className="form-check-input" type="radio" value="2" checked={this.state.sex == 2 ? true : false} name="sex" />
-                    <label className="form-check-label" >Female</label></div>
+                <div class="row">
+                  <div className="col-sm-6">
+                    <label className="control-margin-lbl"   > Sex: </label>
+                  </div>
+                  <div className="col-sm-4">
+                    <div className="form-check form-check-inline" onChange={this.setSex.bind(this)}>
+                      <input className="form-check-input" type="radio" value="1" checked={this.state.sex == 1 ? true : false} name="sex" />
+                      <label className="form-check-label" >Male</label>
+                      <input className="form-check-input" type="radio" value="2" checked={this.state.sex == 2 ? true : false} name="sex" />
+                      <label className="form-check-label" >Female</label></div>
                     <br></br>
                     <div className="validationMsg">
                       <Error name="sex" />
                     </div>
-                    </div></div></div></div>
-                  {/* </td> */}
+                  </div></div></div></div>
+            {/* </td> */}
 
-                {/* </tr> */}
-                {/* <div > */}
-                <br />
-                {/* <tr>
+            {/* </tr> */}
+            {/* <div > */}
+            <br />
+            {/* <tr>
 
                   <td> */}
-                  <div class="row">
-                    <div class="col-sm-8">
-                      <div class="row">
-                        <div className="col-sm-6">
-                          <label className="control-margin-lbl"> What is the profession? </label>
-                          
-                        </div>
-                          <div className="col-sm-4">
-                            <select className="form-control dorp-box" id="idProf" value={this.state.selectedProfession} onChange={this.handleProfessionChange.bind(this)} name="professioncolumn">                            {
-                              this.state.profession.map((read, i) => {
-                                this.state.read = read.name;
-                                console.log("profession ID :  " + read.id);
-                                return <option key={read.value} value={read.id}>{read.name}</option>
-                              })
-                            }
-                            </select>
-                            <div className="validationMsg">
-                              <Error name="sex" />
-                            </div>
-                          </div></div></div></div>
-                    <br/>
-                  {/* </td>
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="row">
+                  <div className="col-sm-6">
+                    <label className="control-margin-lbl"> What is the profession? </label>
+
+                  </div>
+                  <div className="col-sm-4">
+                    <select className="form-control dorp-box" id="idProf" value={this.state.selectedProfession} onChange={this.handleProfessionChange.bind(this)} name="professioncolumn">                            {
+                      this.state.profession.map((read, i) => {
+                        this.state.read = read.name;
+                        console.log("profession ID :  " + read.id);
+                        return <option key={read.value} value={read.id}>{read.name}</option>
+                      })
+                    }
+                    </select>
+                    <div className="validationMsg">
+                      <Error name="sex" />
+                    </div>
+                  </div></div></div></div>
+            <br />
+            {/* </td>
                 </tr> 
                 <tr>
                 
               <td>  */}
-             {/* <div className={this.state.hideSpecialty ? "hidden" : "control-margin-lbl"}> <br /></div> */}
-               <div class="row">
+            {/* <div className={this.state.hideSpecialty ? "hidden" : "control-margin-lbl"}> <br /></div> */}
+            <div class="row">
               <div class="col-sm-8">
-                     <div class="row">
-                <div className="col-sm-6">
+                <div class="row">
+                  <div className="col-sm-6">
                     <div id="specialty">
-                {/* <br /> */}
-                    
-                    <label className={this.state.hideSpecialty ? "hidden" : "control-margin-lbl"}> What is the specialty?</label></div> 
+                      {/* <br /> */}
+
+                      <label className={this.state.hideSpecialty ? "hidden" : "control-margin-lbl"}> What is the specialty?</label></div>
                   </div>
 
-                   <div className="col-sm-4">
-                  <div id="specialty2">
-                   {/* <br /> */}
-                    {/* <td> */}
+                  <div className="col-sm-4">
+                    <div id="specialty2">
+                      {/* <br /> */}
+                      {/* <td> */}
                       <select className={this.state.hideSpecialty ? "hidden" : "form-control dorp-box"} value={this.state.specialty} onChange={this.handleChangeSpeciality.bind(this)} name="specialtycolumn">{
 
                         this.state.specialtyData.map((specialProf, i) => {
@@ -864,32 +864,32 @@ export default class ProneApp extends Component {
                       <div className={this.state.hideSpecialty ? "hidden" : "validationMsg"}>
                         <Error name="specialtycolumn" />
                       </div>
-                    {/* </td> */}
-                {/* <br/> */}
-                  </div></div></div></div>
-                  
-                {/* <div className={!this.state.hideSpecialty ? "hidden":''} > <br /></div>  */}
-                  </div>
-                  {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
-                {/* </tr> */}
-                {/* <div className={this.state.hideSpecialty ?   "":"hidden"} id="lineBreak"> <br /></div> */}
-                <div className={this.state.hideSpecialty ? "hidden":''} > <br /></div> 
+                      {/* </td> */}
+                      {/* <br/> */}
+                    </div></div></div></div>
 
-                
-                <div class="row">
-              <div class="col-sm-8">
+              {/* <div className={!this.state.hideSpecialty ? "hidden":''} > <br /></div>  */}
+            </div>
+            {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
+            {/* </tr> */}
+            {/* <div className={this.state.hideSpecialty ?   "":"hidden"} id="lineBreak"> <br /></div> */}
+            <div className={this.state.hideSpecialty ? "hidden" : ''} > <br /></div>
+
+
             <div class="row">
-                <div className="col-sm-6">
-                {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
-                {/* <tr>
+              <div class="col-sm-8">
+                <div class="row">
+                  <div className="col-sm-6">
+                    {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
+                    {/* <tr>
                   <td> */}
                     <label className="control-margin-lbl">What is the location of practice?</label>
-                  {/* </td>
+                    {/* </td>
                   <td> */}
-</div>
+                  </div>
 
-                <div className="col-sm-4">
-                {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
+                  <div className="col-sm-4">
+                    {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
                     <select className="form-control dorp-box" value={this.state.location} onChange={this.handleLocationChange.bind(this)} name="locationcolumn">{
                       this.state.locationData.map((area, i) => {
 
@@ -903,19 +903,19 @@ export default class ProneApp extends Component {
                     <div className="validationMsg">
                       <Error name="locationcolumn" />
                     </div>
-                    </div></div></div></div>
-                  {/* </td>
+                  </div></div></div></div>
+            {/* </td>
                 </tr>  */}
-                <br />
-                {/* </tbody>
+            <br />
+            {/* </tbody>
             </table> */}
-          {/* </div>   */}
+            {/* </div>   */}
 
-                {/* Start specific complaints */}
-                {/* <div>
+            {/* Start specific complaints */}
+            {/* <div>
                 <table>
               <tbody> */}
-                {/* <tr>
+            {/* <tr>
 
                   <td> <label className="control-margin-lbl"> Complaint issue type:  </label></td>
                   <td>
@@ -952,30 +952,30 @@ export default class ProneApp extends Component {
                       </div>
                   </td>
                   </tr> */}
-                {/* <td> <button> <img src={buttonPlus} alt="my image" onClick={() => this.createTableMale()} /></button></td> */}
-                {/* <input type="button" img src={buttonPlus} alt="my image" onClick={() => this.createTableMale()} ></input> */}
-                {/* <div>
+            {/* <td> <button> <img src={buttonPlus} alt="my image" onClick={() => this.createTableMale()} /></button></td> */}
+            {/* <input type="button" img src={buttonPlus} alt="my image" onClick={() => this.createTableMale()} ></input> */}
+            {/* <div>
                   {this.state.isHidden && this.createTableMale()}
 
                       
                     
                   </div> */}
 
-                {/* <tr> */}
-                {/* specificComplaintData={this.state.specificComplaintData} */}
+            {/* <tr> */}
+            {/* specificComplaintData={this.state.specificComplaintData} */}
 
-                <MultiForm onSpecCompToParent={this.setReturnValChild}  onRemoveElement={this.removeElementFromArray}/>
-                {/* <div >
+            <MultiForm onSpecCompToParent={this.setReturnValChild} onRemoveElement={this.removeElementFromArray} />
+            {/* <div >
                         <input className="img-box plusButton" type="button" style={{ backgroundImage: `url(${buttonPlus})` }} alt="my image"  ></input>
                     </div> */}
-                {/* </tr> */}
-                {/* </tbody>
+            {/* </tr> */}
+            {/* </tbody>
                   </table>
                   </div> */}
-                {/* </tr> */}
-                {/* <br /> */}
-                {/* End specific complaints */}
-                {/* <tr>
+            {/* </tr> */}
+            {/* <br /> */}
+            {/* End specific complaints */}
+            {/* <tr>
                   <td>
                     <label className="control-margin-lbl">How many previous complaints?</label>
                   </td>
@@ -987,29 +987,29 @@ export default class ProneApp extends Component {
                   </td>
                 </tr> <br/> */}
 
-                {/* Start selectbox Previous complaints */}
-                {/* <div>
+            {/* Start selectbox Previous complaints */}
+            {/* <div>
                 <table>
               <tbody> */}
-                {/* <tr>
+            {/* <tr>
                   <td> */}
-                  {/* <br/> */}
-                  {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
-                    
-                  
-                  {/* <div className={this.state.hideSpecialty ? "" : "hidden"  } id="lineBreak"> <br /></div> */}
-                    
-                    
-                  <div class="row">
-                  <div class="col-sm-8"> 
-                   <div class="row">
-                   <div class="col-sm-6">                  
+            {/* <br/> */}
+            {/* <div className={this.state.hideSpecialty ? "hidden" : ""} id="lineBreak"> <br /></div> */}
+
+
+            {/* <div className={this.state.hideSpecialty ? "" : "hidden"  } id="lineBreak"> <br /></div> */}
+
+
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="row">
+                  <div class="col-sm-6">
                     <label className="control-margin-lbl"> How many previous complaints? </label>
-                  {/* </td>
+                    {/* </td>
                   <td> */}
                   </div>
-                  <div class="col-sm-4">                  
-                  
+                  <div class="col-sm-4">
+
                     <select className="form-control dorp-box" value={this.state.complaints} onChange={this.setComplaints.bind(this)} name="complaintsColumn">{
                       this.state.complaintsData.map((prevComps, i) => {
 
@@ -1023,18 +1023,18 @@ export default class ProneApp extends Component {
                     <div className="validationMsg">
                       <Error name="complaintsColumn" />
                     </div>
-                    </div>
-                    </div>
-                    <div className="col-sm-4">  
-                            </div>
-                            </div></div>
-                  {/* </td>
+                  </div>
+                </div>
+                <div className="col-sm-4">
+                </div>
+              </div></div>
+            {/* </td>
                 </tr>  */}
-                <br />
+            <br />
 
-                {/* End selectbox Previous complaints */}
+            {/* End selectbox Previous complaints */}
 
-                {/* <tr>
+            {/* <tr>
                   <td> <label className="control-margin-lbl">When was the last complaint?</label>
                 
                   </td>
@@ -1045,10 +1045,10 @@ export default class ProneApp extends Component {
             /></td>
                 </tr> */}
 
-                {/* </tbody> </table>
+            {/* </tbody> </table>
                 </td>
                 </tr> */}
-              {/* </tbody>
+            {/* </tbody>
             </table> */}
           </div>
           {/* <Test /> */}

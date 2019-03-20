@@ -24,6 +24,8 @@ export default class Colonoscopy extends React.Component {
     constructor(props) {
         super(props);
         // this.child = React.createRef();
+        this.child = React.createRef();
+        this.childPatient = React.createRef();
         this.state = {
             errors: {},
             symptom: '',
@@ -385,6 +387,21 @@ export default class Colonoscopy extends React.Component {
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </div >
     }
+
+    clickEndSession = () => {
+        this.child.current.endSession()
+    }
+
+    // onSubmit(e) {
+    //     console.log("on Submit colon 11")
+    //     this.child.current.onSubmit()
+    // }
+    // validate(e) {
+    //     console.log("on validate colon")
+    //     var error = ''
+
+    //     // return error;
+    // }
     render() {
 
         // const grterThn = "<";
@@ -399,8 +416,11 @@ export default class Colonoscopy extends React.Component {
 
         return (
             <Wizard
+                ref={this.child}
                 initialValues={{ employed: true }}
-                // onSubmit={this.onSubmit.bind(this)}
+                // endSession={this.clickEndSession.bind(this)}
+                onSubmit={this.onSubmit.bind(this)}
+                // validate={this.validate.bind(this)}
                 getCategoryFromServer={this.getCategoryFromServer.bind(this)}
             >
                 <Wizard.Page>
@@ -410,11 +430,28 @@ export default class Colonoscopy extends React.Component {
 
                 <Wizard.Page>
 
-                    <Guideline />
+                    <Guideline trigerInParent={this.clickEndSession} />
 
                 </Wizard.Page>
-                <Wizard.Page>
-                    < PatientInfo />
+                <Wizard.Page validate={values => {
+                    const errors = {}
+                    console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111")
+                    if (this.state.returnArrayFromChild == "") {
+                        // alert("In error")
+                        console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% if" + this.state.returnArrayFromChild)
+                        errors.specificComplaintcolumn = 'Please enter an appropriate value'
+                    } else {
+                        console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% else")
+                        // errors.specificComplaintcolumn =''
+                    }
+
+                    return errors
+                }}>
+                    < PatientInfo
+                    // ref={this.child}
+                    // onSubmit={this.onSubmit.bind(this)}
+
+                    />
 
 
 

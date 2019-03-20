@@ -73,6 +73,7 @@ export default class Wizard extends React.Component {
     }))
 
   endSession = () => {
+    // const { clickEndSession } = this.props;
     this.setState(state => ({
       // page: Math.max(state.page + 1, 0)
       page: 0
@@ -98,6 +99,7 @@ export default class Wizard extends React.Component {
  */
 
   validate = values => {
+    // const { children, validate } = this.props
     const activePage = React.Children.toArray(this.props.children)[
       this.state.page
     ]
@@ -108,7 +110,7 @@ export default class Wizard extends React.Component {
     const { children, onSubmit } = this.props
     const { page } = this.state
     const isLastPage = page === React.Children.count(children) - 1
-
+    console.log("in submit wizard")
     // if(isLastPage){
     if (this.state.page == 1) {
       this.next(values)
@@ -116,6 +118,8 @@ export default class Wizard extends React.Component {
     } else {
       this.next(values)
     }
+    // return onSubmit(values)
+
   }
 
 

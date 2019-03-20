@@ -299,3 +299,33 @@ table.pushright {
 .padding-Radio{
   padding-left: 35px
 }
+
+.radio-button-new{
+  /* vertical-align: top; */
+  vertical-align: -webkit-baseline-middle;
+  /* width: 13px; */
+  /* height: 15px; */
+  padding: 0;
+  margin: 8px;
+  position: relative;
+  /* position: sticky; */
+  overflow: hidden;
+  top: -5px;
+  padding-top: 2px; 
+ margin-top: 5px;
+
+}
+.hr1 { 
+  display: block;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-left: Auto;
+  margin-right: 30%;
+  border-style: dashed;
+  border-width: 1px;
+} 
+
+.hidden-radio-group{
+  margin-top: 10px;
+
+}

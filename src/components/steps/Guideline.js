@@ -6,6 +6,18 @@ import uniLogo from '../../../src/img/UniLogo.png';
 import proneImg from '../../../src/img/ProneProne.png';
 
 export default class Guideline extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
+
+        this.trigerInParent = this.trigerInParent.bind(this);
+
+    }
+
+    trigerInParent(e) {
+        this.props.trigerInParent(e.target.value);
+    }
     render() {
 
         return (
@@ -37,11 +49,11 @@ export default class Guideline extends React.Component {
                     <div className="row container">
                         <div className="col-sm-4 "></div>
                         <div className="col-sm-4 ">
-                            <button className="App button-guideline text-button">Enter patient data</button>
+                            <button type="submit" className="App button-guideline text-button">Enter patient data</button>
                         </div>
                         {/* <div className="col-sm-1 "></div> */}
                         <div className="col-sm-4 ">
-                            <button className="App button-guideline text-button">End session</button>
+                            <button className="App button-guideline text-button" onClick={this.trigerInParent}>End session</button>
 
                         </div>
 
