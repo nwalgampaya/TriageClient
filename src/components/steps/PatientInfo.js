@@ -270,9 +270,82 @@ export default class PatientInfo extends React.Component {
                 <Wizard.Page validate={values => {
                     const errors = {}
                     console.log("in validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1111")
-                    if (this.state.patientAge == 41) {
+                    if (this.state.patientAge == 40) {
 
-                        errors.age = "your age is "
+                        errors.age = "Age is a mandetory feild "
+                    }
+                    if (this.state.positiveIFOBT == '') {
+
+                        errors.optionIfobt = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveNBCSP == '') {
+
+                        errors.optionNbcsp = "Mandetory feild please enter value "
+                    }
+                    if (this.state.anaemiaOptions == '') {
+
+                        errors.optionAnaemia = "Mandetory feild please enter value "
+                    }
+                    if (this.state.rectalBOptions == '') {
+
+                        errors.optionRectalB = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveCause == '') {
+
+                        errors.optionCause = "Mandetory feild please enter value "
+                    }
+                    if (this.state.altBwlHbtOptions == '') {
+
+                        errors.optionAltBwlHbt = "Mandetory feild please enter value "
+                    }
+                    if (this.state.abdPainOptions == '') {
+
+                        errors.optionAbdPain = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveWeightLoss == '') {
+
+                        errors.optionWeightLoss = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveMassPalpable == '') {
+
+                        errors.optionMassPalpable = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positivePossibleIBD == '') {
+
+                        errors.optionPossibleIBD = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveCalprotectin == '') {
+
+                        errors.optionCalprotectin = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveCRPESR == '') {
+
+                        errors.optionCRPESR = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveAlbumin == '') {
+
+                        errors.optionAlbumin = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveSigmoidoscopy == '') {
+
+                        errors.optionSigmoidoscopy = "Mandetory feild please enter value "
+                    }
+
+                    if (this.state.positiveRecentChangeIBD == '') {
+
+                        errors.optionRecentChangeIBD = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveFerritin == '') {
+
+                        errors.optionFerritin = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveUnknownOrigin == '') {
+
+                        errors.optionUnknownOrigin = "Mandetory feild please enter value "
+                    }
+                    if (this.state.positiveAbnormalImg == '') {
+
+                        errors.optionAbnormalImg = "Mandetory feild please enter value "
                     }
                     return errors;
                 }}>
@@ -290,17 +363,19 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
 
 
                             <div className=" col-sm-12">
-                                <div className="row col-sm-12 ">
-                                    <p style={{ paddingTop: "10px", paddingLeft: "5px", paddingRight: "15px" }}> Age </p>
-                                    <button type="button" className="App button-AddSub text-button" onClick={this.substractAge}>-</button>
-                                    {/* <div className="col-sm-1 "> */}
-                                    {/* </div> */}
-                                    {/* <div className="col-sm-1 "> */}
-                                    <label name="age" style={{ paddingTop: "10px", paddingLeft: "5px", paddingRight: "5px" }}>{this.state.patientAge}</label>
-                                    {/* </div> */}
-                                    {/* <div className="col-sm-1 "> */}
-                                    <button type="button" className="App button-AddSub text-button" onClick={this.addAge}>+</button>
-                                    {/* </div> */}
+                                <div className="row">
+                                    <div className="row col-sm-12 ">
+                                        <p style={{ paddingTop: "10px", paddingLeft: "5px", paddingRight: "15px" }}> Age </p>
+                                        <button type="button" className="App button-AddSub text-button" onClick={this.substractAge}>-</button>
+                                        {/* <div className="col-sm-1 "> */}
+                                        {/* </div> */}
+                                        {/* <div className="col-sm-1 "> */}
+                                        <label name="age" style={{ paddingTop: "10px", paddingLeft: "5px", paddingRight: "5px" }}>{this.state.patientAge}</label>
+                                        {/* </div> */}
+                                        {/* <div className="col-sm-1 "> */}
+                                        <button type="button" className="App button-AddSub text-button" onClick={this.addAge}>+</button>
+                                        {/* </div> */}
+                                    </div>
                                     <div className="validationMsg">
                                         <Error name="age" />
                                     </div>
@@ -317,7 +392,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >No</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveIFOBT == 2 ? true : false} value="2" name="optionIfobt" />
                                                 <label className="form-check-label" >Yes</label>
+                                            </div><div className="validationMsg">
+                                                <Error name="optionIfobt" />
                                             </div>
+
                                         </div>
                                         {/* <span className="help-block">{validation.positiveIFOBT.message}</span> */}
                                     </div>
@@ -331,6 +409,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >No</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveNBCSP == 2 ? true : false} value="2" name="optionNbcsp" />
                                                 <label className="form-check-label" >Yes</label>
+
+                                            </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionNbcsp" />
                                             </div>
                                         </div>
                                     </div>
@@ -353,6 +435,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <input className="form-check-input" type="radio" checked={this.state.anaemiaOptions == 4 ? true : false} value="4" name="optionAnaemia" />
                                                 <label className="form-check-label" >Yes, <b>untreated</b> likely non-gastrointestinal tract cause such as menorrhagia/diet</label>
                                             </div>
+
+                                            <div className="validationMsg">
+                                                <Error name="optionAnaemia" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -370,6 +456,9 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <input className="form-check-input" type="radio" checked={this.state.rectalBOptions == 3 ? true : false} value="3" name="optionRectalB" />
                                                 <label className="form-check-label" >Yes, > 12 months, occasional</label>
                                             </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionRectalB" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -383,6 +472,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label radio-button-new" >"No likely anorectal cause found <br /> (such as normal  rigid/flexible sigmoidoscopy) or <br />failed treatment of haemorrhoids"</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveCause == 2 ? true : false} value="2" name="optionCause" />
                                                 <label className="form-check-label radio-button-new" >Likely cause found after <b>specialist assessment </b><br /> including rigid/flexible sigmoidoscopy such as haemorrhoids</label>
+
+                                                <div className="validationMsg">
+                                                    <Error name="optionCause" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -404,6 +497,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >Yes, > 12 months</label>
                                             </div>
 
+                                            <div className="validationMsg">
+                                                <Error name="optionAltBwlHbt" />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -420,6 +517,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >Yes, &lt; 6 weeks</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.abdPainOptions == 3 ? true : false} value="3" name="optionAbdPain" />
                                                 <label className="form-check-label" >Yes, ≥ 6 weeks</label>
+
+                                            </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionAbdPain" />
                                             </div>
                                         </div>
                                     </div>
@@ -435,6 +536,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >No</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveWeightLoss == 2 ? true : false} value="2" name="optionWeightLoss" />
                                                 <label className="form-check-label" >Yes</label>
+
+                                            </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionWeightLoss" />
                                             </div>
                                         </div>
                                     </div>
@@ -449,6 +554,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >No</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveMassPalpable == 2 ? true : false} value="2" name="optionMassPalpable" />
                                                 <label className="form-check-label" >Yes</label>
+
+                                            </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionMassPalpable" />
                                             </div>
                                         </div>
                                     </div>
@@ -464,6 +573,9 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >No</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positivePossibleIBD == 2 ? true : false} value="2" name="optionPossibleIBD" />
                                                 <label className="form-check-label" >Yes</label>
+                                            </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionPossibleIBD" />
                                             </div>
                                         </div>
                                     </div>
@@ -485,6 +597,9 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveCalprotectin == 2 ? true : false} value="2" name="optionCalprotectin" />
                                                 <label className="form-check-label" >calprotectin (-)</label>
                                             </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionCalprotectin" />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -498,6 +613,9 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveCRPESR == 2 ? true : false} value="2" name="optionCRPESR" />
                                                 <label className="form-check-label" >normal CRP and ESR</label>
                                             </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionCRPESR" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="row col-sm-12">
@@ -510,6 +628,9 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveAlbumin == 2 ? true : false} value="2" name="optionAlbumin" />
                                                 <label className="form-check-label" >low albumin</label>
                                             </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionAlbumin" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="row col-sm-12">
@@ -521,6 +642,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                             <div className="col-sm-7">
                                                 <input className="form-check-input hidden-radio-group" type="radio" checked={this.state.positiveSigmoidoscopy == 2 ? true : false} value="2" name="optionSigmoidoscopy" />
                                                 <label className="form-check-label radio-button-new" id="sigmoidoscopy" >specialist assessment <br />(including normal rigid/flexible sigmoidoscopy)</label>
+
+                                            </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionSigmoidoscopy" />
                                             </div>
                                         </div>
                                     </div>
@@ -539,6 +664,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >Yes</label>
                                             </div>
 
+                                            <div className="validationMsg">
+                                                <Error name="optionRecentChangeIBD" />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -553,6 +682,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >No</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveFerritin == 2 ? true : false} value="2" name="optionFerritin" />
                                                 <label className="form-check-label" >Yes</label>
+                                            </div>
+
+                                            <div className="validationMsg">
+                                                <Error name="optionFerritin" />
                                             </div>
 
                                         </div>
@@ -571,6 +704,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >Yes</label>
                                             </div>
 
+                                            <div className="validationMsg">
+                                                <Error name="optionUnknownOrigin" />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -587,6 +724,10 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                                 <label className="form-check-label" >Yes, likely colorectal cancer</label><br />
                                                 <input className="form-check-input" type="radio" checked={this.state.positiveAbnormalImg == 3 ? true : false} value="3" name="optionAbnormalImg" />
                                                 <label className="form-check-label" >Yes, unlikely colorectal cancer </label>
+
+                                            </div>
+                                            <div className="validationMsg">
+                                                <Error name="optionAbnormalImg" />
                                             </div>
                                         </div>
                                     </div>

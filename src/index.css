@@ -231,15 +231,23 @@ font-weight: 400;
 margin-left: 4px;
 margin-right: 4px;
 }
-.validationMsg {
+/* .validationMsg {
 float: left;
 text-align: left;
 color: red;
 list-style: circle;
 font-family: 'Lucida Sans', 'Helvetica', 'Sans-serif', 'sans';
-font-size: 9pt;
+font-size: 9pt; */
+/* } */
+.validationMsg {
+  float: left;
+  text-align: left;
+  color: red;
+  list-style: circle;
+  font-family: "Lucida Sans", "Helvetica", "Sans-serif", "sans";
+  font-size: 10pt;
+  font-weight: bold;
 }
-
 .inline-error  > ul {
 display: inline-block;
 position: relative;

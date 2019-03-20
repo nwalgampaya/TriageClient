@@ -410,7 +410,13 @@ export default class Colonoscopy extends React.Component {
                 name={name}
                 subscribe={{ touched: true, error: true }}
                 render={({ meta: { touched, error } }) =>
-                    touched && error ? <span>{error}</span> : null
+                    touched && error ? <div className="inline-error">
+                        <ul>
+                            <li className="validationMsg">
+                                <span>{error}</span>
+                            </li>
+                        </ul>
+                    </div> : null
                 }
             />)
 
