@@ -44,8 +44,8 @@ export default class PatientInfo extends React.Component {
             positiveFerritin: '',
             positiveUnknownOrigin: '',
             positiveAbnormalImg: '',
-            optionSurveillanceCol: '',
-            optionTherapeuticPoly: '',
+            positiveSurveillanceCol: '',
+            positiveTherapeuticPoly: '',
 
             // validation: this.validator.valid()
         }
@@ -212,13 +212,13 @@ export default class PatientInfo extends React.Component {
 
     setSurveillanceCol(event) {
         this.setState({
-            optionSurveillanceCol: event.target.value
+            positiveSurveillanceCol: event.target.value
         })
     }
 
     setTherapeuticPoly(event) {
         this.setState({
-            optionTherapeuticPoly: event.target.value
+            positiveTherapeuticPoly: event.target.value
         })
     }
     clickEndSession = () => {
@@ -276,77 +276,91 @@ export default class PatientInfo extends React.Component {
                     }
                     if (this.state.positiveIFOBT == '') {
 
-                        errors.optionIfobt = "Mandetory feild please enter value "
+                        errors.optionIfobt = "This question requires an answer "
                     }
-                    if (this.state.positiveNBCSP == '') {
+                    console.log(" positiveNBCSP" + this.state.positiveIFOBT)
+                    console.log(" positiveNBCSP" + this.state.positiveNBCSP)
 
-                        errors.optionNbcsp = "Mandetory feild please enter value "
+
+                    if (this.state.positiveNBCSP == '' && this.state.positiveIFOBT != 1) {
+                        console.log(" positiveNBCSP")
+
+                        errors.optionNbcsp = "This question requires an answer "
                     }
                     if (this.state.anaemiaOptions == '') {
 
-                        errors.optionAnaemia = "Mandetory feild please enter value "
+                        errors.optionAnaemia = "This question requires an answer "
                     }
                     if (this.state.rectalBOptions == '') {
 
-                        errors.optionRectalB = "Mandetory feild please enter value "
+                        errors.optionRectalB = "This question requires an answer "
                     }
-                    if (this.state.positiveCause == '') {
-
-                        errors.optionCause = "Mandetory feild please enter value "
+                    if (this.state.positiveCause == '' && this.state.rectalBOptions != 1) {
+                        console.log(" positivecause")
+                        errors.optionCause = "This question requires an answer "
                     }
                     if (this.state.altBwlHbtOptions == '') {
 
-                        errors.optionAltBwlHbt = "Mandetory feild please enter value "
+                        errors.optionAltBwlHbt = "This question requires an answer "
                     }
                     if (this.state.abdPainOptions == '') {
 
-                        errors.optionAbdPain = "Mandetory feild please enter value "
+                        errors.optionAbdPain = "This question requires an answer "
                     }
                     if (this.state.positiveWeightLoss == '') {
 
-                        errors.optionWeightLoss = "Mandetory feild please enter value "
+                        errors.optionWeightLoss = "This question requires an answer "
                     }
                     if (this.state.positiveMassPalpable == '') {
 
-                        errors.optionMassPalpable = "Mandetory feild please enter value "
+                        errors.optionMassPalpable = "This question requires an answer "
                     }
                     if (this.state.positivePossibleIBD == '') {
 
-                        errors.optionPossibleIBD = "Mandetory feild please enter value "
+                        errors.optionPossibleIBD = "This question requires an answer "
                     }
-                    if (this.state.positiveCalprotectin == '') {
+                    if (this.state.positiveCalprotectin == '' && this.state.positivePossibleIBD != 1) {
 
-                        errors.optionCalprotectin = "Mandetory feild please enter value "
+                        errors.optionCalprotectin = "This question requires an answer "
                     }
-                    if (this.state.positiveCRPESR == '') {
+                    if (this.state.positiveCRPESR == '' && this.state.positivePossibleIBD != 1) {
 
-                        errors.optionCRPESR = "Mandetory feild please enter value "
+                        errors.optionCRPESR = "This question requires an answer "
                     }
-                    if (this.state.positiveAlbumin == '') {
+                    if (this.state.positiveAlbumin == '' && this.state.positivePossibleIBD != 1) {
 
-                        errors.optionAlbumin = "Mandetory feild please enter value "
+                        errors.optionAlbumin = "This question requires an answer "
                     }
-                    if (this.state.positiveSigmoidoscopy == '') {
+                    if (this.state.positiveSigmoidoscopy == '' && this.state.positivePossibleIBD != 1) {
 
-                        errors.optionSigmoidoscopy = "Mandetory feild please enter value "
+                        errors.optionSigmoidoscopy = "This question requires an answer "
                     }
 
                     if (this.state.positiveRecentChangeIBD == '') {
 
-                        errors.optionRecentChangeIBD = "Mandetory feild please enter value "
+                        errors.optionRecentChangeIBD = "This question requires an answer "
                     }
                     if (this.state.positiveFerritin == '') {
 
-                        errors.optionFerritin = "Mandetory feild please enter value "
+                        errors.optionFerritin = "This question requires an answer "
                     }
                     if (this.state.positiveUnknownOrigin == '') {
 
-                        errors.optionUnknownOrigin = "Mandetory feild please enter value "
+                        errors.optionUnknownOrigin = "This question requires an answer "
                     }
                     if (this.state.positiveAbnormalImg == '') {
 
-                        errors.optionAbnormalImg = "Mandetory feild please enter value "
+                        errors.optionAbnormalImg = "This question requires an answer "
                     }
+                    if (this.state.positiveSurveillanceCol == '') {
+
+                        errors.optionSurveillanceCol = "This question requires an answer "
+                    }
+                    if (this.state.positiveTherapeuticPoly == '') {
+
+                        errors.optionTherapeuticPoly = "This question requires an answer "
+                    }
+
                     return errors;
                 }}>
                     <div >
@@ -742,14 +756,17 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                         <label>Surveillance colonoscopy as per NHMRC guidelines</label><br />
                                         <div className="padding-Radio row col-sm-11">
                                             <div className=" col-sm-10">
-                                                <input className="form-check-input" type="radio" checked={this.state.optionSurveillanceCol == 1 ? true : false} value="1" name="optionSurveillanceCol" />
+                                                <input className="form-check-input" type="radio" checked={this.state.positiveSurveillanceCol == 1 ? true : false} value="1" name="optionSurveillanceCol" />
                                                 <label className="form-check-label" >No</label><br />
-                                                <input className="form-check-input" type="radio" checked={this.state.optionSurveillanceCol == 2 ? true : false} value="2" name="optionSurveillanceCol" />
+                                                <input className="form-check-input" type="radio" checked={this.state.positiveSurveillanceCol == 2 ? true : false} value="2" name="optionSurveillanceCol" />
                                                 <label className="form-check-label" >Yes, overdue by > 60 days</label><br />
-                                                <input className="form-check-input" type="radio" checked={this.state.optionSurveillanceCol == 3 ? true : false} value="3" name="optionSurveillanceCol" />
+                                                <input className="form-check-input" type="radio" checked={this.state.positiveSurveillanceCol == 3 ? true : false} value="3" name="optionSurveillanceCol" />
                                                 <label className="form-check-label" >Yes, not overdue by > 60 days </label>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="validationMsg">
+                                        <Error name="optionSurveillanceCol" />
                                     </div>
                                 </div>
                                 <hr className="hr1" />
@@ -763,13 +780,16 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                         <label>Therapeutic polypectomy</label><br />
                                         <div className="padding-Radio row col-sm-11">
                                             <div className=" col-sm-10">
-                                                <input className="form-check-input" type="radio" checked={this.state.optionTherapeuticPoly == 1 ? true : false} value="1" name="optionTherapeuticPoly" />
+                                                <input className="form-check-input" type="radio" checked={this.state.positiveTherapeuticPoly == 1 ? true : false} value="1" name="optionTherapeuticPoly" />
                                                 <label className="form-check-label" >No</label><br />
-                                                <input className="form-check-input" type="radio" checked={this.state.optionTherapeuticPoly == 2 ? true : false} value="2" name="optionTherapeuticPoly" />
+                                                <input className="form-check-input" type="radio" checked={this.state.positiveTherapeuticPoly == 2 ? true : false} value="2" name="optionTherapeuticPoly" />
                                                 <label className="form-check-label" >Yes, ≥ 2 cm</label><br />
-                                                <input className="form-check-input" type="radio" checked={this.state.optionTherapeuticPoly == 3 ? true : false} value="3" name="optionTherapeuticPoly" />
+                                                <input className="form-check-input" type="radio" checked={this.state.positiveTherapeuticPoly == 3 ? true : false} value="3" name="optionTherapeuticPoly" />
                                                 <label className="form-check-label" >Yes, &gt; 2 cm </label>
                                             </div>
+                                        </div>
+                                        <div className="validationMsg">
+                                            <Error name="optionTherapeuticPoly" />
                                         </div>
                                     </div>
                                 </div>
