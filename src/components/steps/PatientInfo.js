@@ -1,7 +1,8 @@
 import React from 'react'
 import buttonMinus from '../../img/button-minus.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Form, Check, Radio } from 'bootstrap/dist/css/bootstrap.min.css';
 // import FormValidator from '../validator/FormValidator';
+import Form from 'react-bootstrap/Form'
 import Wizard from '../../../src/Wizard.js'
 import Welcome from '../steps/Welcome.js'
 import Guideline from '../steps/Guideline.js'
@@ -368,14 +369,17 @@ export default class PatientInfo extends React.Component {
                             <div className="para-headings col-sm-12">
                                 <p>Patient Information</p>
                             </div>
-                            {/* import buttonPlus from '../../img/button-plus.png';
-import buttonMinus from '../../img/button-minus.png';
+                            {/* <Radio name="groupOptions">Option 1</Radio> */}
 
-style={{ backgroundImage: `url(${buttonMinus})` }}
-style={{ backgroundImage: `url(${buttonPlus})` }} */}
+                            <div className="row col-sm-12 ">
+                                <div className=" col-sm-12" onChange={this.setIFOBT.bind(this)}>
+                                    <Form.Check custom label="No" type={"radio"} id={`positiveIFOBT-${"1"}`} checked={this.state.positiveIFOBT == 1 ? true : false} name="optionIfobt" value="1"
+                                    />
+                                    <Form.Check custom label="Yes" type={"radio"} id={`positiveIFOBT-${"2"}`} name="optionIfobt" value="2" checked={this.state.positiveIFOBT == 2 ? true : false}
+                                    />
 
-
-
+                                </div>
+                            </div>
                             <div className=" col-sm-12">
                                 <div className="row">
                                     <div className="row col-sm-12 ">
@@ -398,7 +402,7 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                     <h5>Indication A: Symptoms or investigations </h5>
                                 </div>
                                 <div className="row col-sm-12">
-                                    <div className=" col-sm-12" onChange={this.setIFOBT.bind(this)}>
+                                    {/* <div className=" col-sm-12" onChange={this.setIFOBT.bind(this)}>
                                         <label >Positive immunohistochemical faecal occult blood test (iFOBT(+))</label><br />
                                         <div className="padding-Radio row col-sm-11">
                                             <div className=" col-sm-10">
@@ -411,8 +415,7 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                                             </div>
 
                                         </div>
-                                        {/* <span className="help-block">{validation.positiveIFOBT.message}</span> */}
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="row col-sm-12">
                                     <div className={this.state.hideNBCSP ? "hidden  col-sm-12 div-top " : "div-top col-sm-12"} onChange={this.setIfobtTNBSP.bind(this)}>
@@ -800,7 +803,7 @@ style={{ backgroundImage: `url(${buttonPlus})` }} */}
                 <Wizard.Page>
                     <ColCategorisation />
                 </Wizard.Page>
-            </Wizard>
+            </Wizard >
 
 
 
