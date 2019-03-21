@@ -7,13 +7,15 @@ import Example from "./components/steps/MultiSelect";
 import Form from "./components/steps/DynamicBox"
 import Colonoscopy from "../src/components/Colonoscopy.js"
 import PatientInfo from "./components/steps/PatientInfo";
+import DonutChart from "./components/steps/DonutChart";
 // import App from"./components/App"
 const template = (
   // <ProneApp/>
   // <Form/>
   // <Example/>
   // <Colonoscopy/>
-  <PatientInfo />
+  // <PatientInfo />
+  <DonutChart />
   // <App/>
 );
 
