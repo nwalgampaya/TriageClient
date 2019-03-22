@@ -47,7 +47,7 @@ export default class PatientInfo extends React.Component {
             positiveAbnormalImg: '',
             positiveSurveillanceCol: '',
             positiveTherapeuticPoly: '',
-
+            test: "specialist assessment \n (including normal rigid/flexible sigmoidoscopy)"
             // validation: this.validator.valid()
         }
         // this.submitted = false;
@@ -370,7 +370,7 @@ export default class PatientInfo extends React.Component {
                                 <p>Patient Information</p>
                             </div>
                             <div className=" col-sm-12">
-                                <div className="row">
+                                <div className="padding-Radio row col-sm-11">
                                     <div className="row col-sm-12 ">
                                         <p style={{ paddingTop: "10px", paddingLeft: "5px", paddingRight: "15px" }}> Age </p>
                                         <button type="button" className="App button-AddSub text-button" onClick={this.substractAge}>-</button>
@@ -388,12 +388,11 @@ export default class PatientInfo extends React.Component {
                                     <label >Positive immunohistochemical faecal occult blood test (iFOBT(+))</label><br />
                                     <div className="padding-Radio  row col-sm-11">
                                         <div className=" col-sm-10">
-
                                             <Form.Check custom label="No" type={"radio"} id={`positiveIFOBT-${"1"}`} checked={this.state.positiveIFOBT == 1 ? true : false} name="optionIfobt" value="1" />
                                             <Form.Check custom label="Yes" type={"radio"} id={`positiveIFOBT-${"2"}`} name="optionIfobt" value="2" checked={this.state.positiveIFOBT == 2 ? true : false} />
-                                            <div className="validationMsg">
-                                                <Error name="optionIfobt" />
-                                            </div>
+                                        </div>
+                                        <div className="validationMsg">
+                                            <Error name="optionIfobt" />
                                         </div>
                                     </div>
                                 </div>
@@ -453,12 +452,8 @@ export default class PatientInfo extends React.Component {
                                     <label>Cause</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-
                                             <Form.Check custom label="No likely anorectal cause found <br /> (such as normal  rigid/flexible sigmoidoscopy) or <br />failed treatment of haemorrhoids" type={"radio"} id={`positiveCause-${"1"}`} checked={this.state.positiveCause == 1 ? true : false} name="optionCause" value="1" />
-
-
                                             <Form.Check custom label="Likely cause found after <b>specialist assessment </b><br /> including rigid/flexible sigmoidoscopy such as haemorrhoids" type={"radio"} id={`positiveCause-${"2"}`} checked={this.state.positiveCause == 2 ? true : false} name="optionCause" value="2" />
-
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionCause" />
@@ -472,16 +467,11 @@ export default class PatientInfo extends React.Component {
                                     <label>Altered bowel habit</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.altBwlHbtOptions == 1 ? true : false} value="1" name="optionAltBwlHbt" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.altBwlHbtOptions == 2 ? true : false} value="2" name="optionAltBwlHbt" />
-                                            <label className="form-check-label" >Yes, &lt; 6 weeks</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.altBwlHbtOptions == 3 ? true : false} value="3" name="optionAltBwlHbt" />
-                                            <label className="form-check-label" >Yes, ≥ 6/52 and ≤ 12 months</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.altBwlHbtOptions == 4 ? true : false} value="4" name="optionAltBwlHbt" />
-                                            <label className="form-check-label" >Yes, > 12 months</label>
+                                            <Form.Check custom label="No" type={"radio"} id={`altBwlHbtOptions-${"1"}`} checked={this.state.altBwlHbtOptions == 1 ? true : false} name="optionAltBwlHbt" value="1" />
+                                            <Form.Check custom label="Yes, &lt; 6 weeks" type={"radio"} id={`altBwlHbtOptions-${"2"}`} checked={this.state.altBwlHbtOptions == 2 ? true : false} name="optionAltBwlHbt" value="2" />
+                                            <Form.Check custom label="Yes, ≥ 6/52 and ≤ 12 months" type={"radio"} id={`altBwlHbtOptions-${"3"}`} checked={this.state.altBwlHbtOptions == 3 ? true : false} name="optionAltBwlHbt" value="3" />
+                                            <Form.Check custom label="Yes, > 12 months" type={"radio"} id={`altBwlHbtOptions-${"4"}`} checked={this.state.altBwlHbtOptions == 4 ? true : false} name="optionAltBwlHbt" value="4" />
                                         </div>
-
                                         <div className="validationMsg">
                                             <Error name="optionAltBwlHbt" />
                                         </div>
@@ -495,13 +485,9 @@ export default class PatientInfo extends React.Component {
                                     <label>Abdominal pain (unexplained)</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.abdPainOptions == 1 ? true : false} value="1" name="optionAbdPain" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.abdPainOptions == 2 ? true : false} value="2" name="optionAbdPain" />
-                                            <label className="form-check-label" >Yes, &lt; 6 weeks</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.abdPainOptions == 3 ? true : false} value="3" name="optionAbdPain" />
-                                            <label className="form-check-label" >Yes, ≥ 6 weeks</label>
-
+                                            <Form.Check custom label="No" type={"radio"} id={`abdPainOptions-${"1"}`} checked={this.state.abdPainOptions == 1 ? true : false} name="optionAbdPain" value="1" />
+                                            <Form.Check custom label="Yes, &lt; 6 weeks" type={"radio"} id={`abdPainOptions-${"2"}`} checked={this.state.abdPainOptions == 2 ? true : false} name="optionAbdPain" value="2" />
+                                            <Form.Check custom label="Yes, ≥ 6 weeks" type={"radio"} id={`abdPainOptions-${"3"}`} checked={this.state.abdPainOptions == 3 ? true : false} name="optionAbdPain" value="3" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionAbdPain" />
@@ -515,11 +501,8 @@ export default class PatientInfo extends React.Component {
                                     <label>Weight loss (unexplained)</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveWeightLoss == 1 ? true : false} value="1" name="optionWeightLoss" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveWeightLoss == 2 ? true : false} value="2" name="optionWeightLoss" />
-                                            <label className="form-check-label" >Yes</label>
-
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveWeightLoss-${"1"}`} checked={this.state.positiveWeightLoss == 1 ? true : false} name="optionWeightLoss" value="1" />
+                                            <Form.Check custom label="Yes" type={"radio"} id={`positiveWeightLoss-${"2"}`} checked={this.state.positiveWeightLoss == 2 ? true : false} name="optionWeightLoss" value="2" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionWeightLoss" />
@@ -532,11 +515,8 @@ export default class PatientInfo extends React.Component {
                                     <label>Mass palpable (abdominal or rectal) or present on rigid/flexible sigmoidoscopy</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveMassPalpable == 1 ? true : false} value="1" name="optionMassPalpable" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveMassPalpable == 2 ? true : false} value="2" name="optionMassPalpable" />
-                                            <label className="form-check-label" >Yes</label>
-
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveMassPalpable-${"1"}`} checked={this.state.positiveMassPalpable == 1 ? true : false} name="optionMassPalpable" value="1" />
+                                            <Form.Check custom label="Yes" type={"radio"} id={`positiveMassPalpable-${"2"}`} checked={this.state.positiveMassPalpable == 2 ? true : false} name="optionMassPalpable" value="2" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionMassPalpable" />
@@ -550,10 +530,8 @@ export default class PatientInfo extends React.Component {
                                     <label>Possible inflammatory bowel disease (IBD)</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positivePossibleIBD == 1 ? true : false} value="1" name="optionPossibleIBD" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positivePossibleIBD == 2 ? true : false} value="2" name="optionPossibleIBD" />
-                                            <label className="form-check-label" >Yes</label>
+                                            <Form.Check custom label="No" type={"radio"} id={`positivePossibleIBD-${"1"}`} checked={this.state.positivePossibleIBD == 1 ? true : false} name="optionPossibleIBD" value="1" />
+                                            <Form.Check custom label="Yes" type={"radio"} id={`positivePossibleIBD-${"2"}`} checked={this.state.positivePossibleIBD == 2 ? true : false} name="optionPossibleIBD" value="2" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionPossibleIBD" />
@@ -570,12 +548,10 @@ export default class PatientInfo extends React.Component {
 
                                     <div className="padding-Radio row col-sm-12" onChange={this.setCalprotectin.bind(this)}>
                                         <div className="col-sm-5 ">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveCalprotectin == 1 ? true : false} value="1" name="optionCalprotectin" />
-                                            <label className="form-check-label" >calprotectin (+)</label>
+                                            <Form.Check custom label="calprotectin (+)" type={"radio"} id={`positiveCalprotectin-${"1"}`} checked={this.state.positiveCalprotectin == 1 ? true : false} name="optionCalprotectin" value="1" />
                                         </div>
                                         <div className="col-sm-7 ">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveCalprotectin == 2 ? true : false} value="2" name="optionCalprotectin" />
-                                            <label className="form-check-label" >calprotectin (-)</label>
+                                            <Form.Check custom label="calprotectin (-)" type={"radio"} id={`positiveCalprotectin-${"2"}`} checked={this.state.positiveCalprotectin == 2 ? true : false} name="optionCalprotectin" value="2" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionCalprotectin" />
@@ -585,12 +561,10 @@ export default class PatientInfo extends React.Component {
 
                                     <div className="padding-Radio row col-sm-12" onChange={this.setCRPESR.bind(this)}>
                                         <div className="col-sm-5 ">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveCRPESR == 1 ? true : false} value="1" name="optionCRPESR" />
-                                            <label className="form-check-label" >raised CRP or ESR</label>
+                                            <Form.Check custom label="raised CRP or ESR" type={"radio"} id={`positiveCRPESR-${"1"}`} checked={this.state.positiveCRPESR == 1 ? true : false} name="optionCRPESR" value="1" />
                                         </div>
                                         <div className="col-sm-7 ">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveCRPESR == 2 ? true : false} value="2" name="optionCRPESR" />
-                                            <label className="form-check-label" >normal CRP and ESR</label>
+                                            <Form.Check custom label="normal CRP and ESR" type={"radio"} id={`positiveCRPESR-${"2"}`} checked={this.state.positiveCRPESR == 2 ? true : false} name="optionCRPESR" value="2" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionCRPESR" />
@@ -599,12 +573,12 @@ export default class PatientInfo extends React.Component {
 
                                     <div className="padding-Radio row col-sm-12" onChange={this.setAlbumin.bind(this)}>
                                         <div className="col-sm-5 ">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveAlbumin == 1 ? true : false} value="1" name="optionAlbumin" />
-                                            <label className="form-check-label" >low albumin</label>
+                                            <Form.Check custom label="low albumin" type={"radio"} id={`positiveAlbumin-${"1"}`} checked={this.state.positiveAlbumin == 1 ? true : false} name="optionAlbumin" value="1" />
+
                                         </div>
                                         <div className="col-sm-7 ">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveAlbumin == 2 ? true : false} value="2" name="optionAlbumin" />
-                                            <label className="form-check-label" >low albumin</label>
+                                            <Form.Check custom label="low albumin" type={"radio"} id={`positiveAlbumin-${"2"}`} checked={this.state.positiveAlbumin == 2 ? true : false} name="optionAlbumin" value="2" />
+
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionAlbumin" />
@@ -613,13 +587,11 @@ export default class PatientInfo extends React.Component {
 
                                     <div className="padding-Radio row col-sm-12" onChange={this.setSigmoidoscopy.bind(this)}>
                                         <div className="col-sm-5 ">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveSigmoidoscopy == 1 ? true : false} value="1" name="optionSigmoidoscopy" />
-                                            <label className="form-check-label radio-button-new" >abnormal rigid    /flexible sigmoidoscopy</label>
+                                            <Form.Check custom label="abnormal rigid/flexible sigmoidoscopy" type={"radio"} id={`positiveSigmoidoscopy-${"1"}`} checked={this.state.positiveSigmoidoscopy == 1 ? true : false} name="optionSigmoidoscopy" value="1" />
                                         </div>
                                         <div className="col-sm-7">
-                                            <input className="form-check-input hidden-radio-group" type="radio" checked={this.state.positiveSigmoidoscopy == 2 ? true : false} value="2" name="optionSigmoidoscopy" />
-                                            <label className="form-check-label radio-button-new" id="sigmoidoscopy" >specialist assessment <br />(including normal rigid/flexible sigmoidoscopy)</label>
-
+                                            {/* {test = "specialist assessment (including normal rigid/flexible sigmoidoscopy)"} */}
+                                            <Form.Check custom label={this.state.test} type={"radio"} id={`positiveSigmoidoscopy-${"2"}`} checked={this.state.positiveSigmoidoscopy == 2 ? true : false} name="optionSigmoidoscopy" value="2" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionSigmoidoscopy" />
@@ -634,10 +606,8 @@ export default class PatientInfo extends React.Component {
                                     <label>Recent change in treatment for established IBD</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveRecentChangeIBD == 1 ? true : false} value="1" name="optionRecentChangeIBD" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveRecentChangeIBD == 2 ? true : false} value="2" name="optionRecentChangeIBD" />
-                                            <label className="form-check-label" >Yes</label>
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveRecentChangeIBD-${"1"}`} checked={this.state.positiveRecentChangeIBD == 1 ? true : false} name="optionRecentChangeIBD" value="1" />
+                                            <Form.Check custom label="Yes" type={"radio"} id={`positiveRecentChangeIBD-${"2"}`} checked={this.state.positiveRecentChangeIBD == 2 ? true : false} name="optionRecentChangeIBD" value="2" />
                                         </div>
 
                                         <div className="validationMsg">
@@ -653,12 +623,9 @@ export default class PatientInfo extends React.Component {
                                     <label>Low MCV/MCH or ferritin</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveFerritin == 1 ? true : false} value="1" name="optionFerritin" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveFerritin == 2 ? true : false} value="2" name="optionFerritin" />
-                                            <label className="form-check-label" >Yes</label>
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveFerritin-${"1"}`} checked={this.state.positiveFerritin == 1 ? true : false} name="optionFerritin" value="1" />
+                                            <Form.Check custom label="Yes" type={"radio"} id={`positiveFerritin-${"2"}`} checked={this.state.positiveFerritin == 2 ? true : false} name="optionFerritin" value="2" />
                                         </div>
-
                                         <div className="validationMsg">
                                             <Error name="optionFerritin" />
                                         </div>
@@ -672,12 +639,9 @@ export default class PatientInfo extends React.Component {
                                     <label>Primary of unknown origin</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveUnknownOrigin == 1 ? true : false} value="1" name="optionUnknownOrigin" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveUnknownOrigin == 2 ? true : false} value="2" name="optionUnknownOrigin" />
-                                            <label className="form-check-label" >Yes</label>
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveUnknownOrigin-${"1"}`} checked={this.state.positiveUnknownOrigin == 1 ? true : false} name="optionUnknownOrigin" value="1" />
+                                            <Form.Check custom label="Yes" type={"radio"} id={`positiveUnknownOrigin-${"2"}`} checked={this.state.positiveUnknownOrigin == 2 ? true : false} name="optionUnknownOrigin" value="2" />
                                         </div>
-
                                         <div className="validationMsg">
                                             <Error name="optionUnknownOrigin" />
                                         </div>
@@ -691,13 +655,9 @@ export default class PatientInfo extends React.Component {
                                     <label>Abnormal imaging</label><br />
                                     <div className=" padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveAbnormalImg == 1 ? true : false} value="1" name="optionAbnormalImg" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveAbnormalImg == 2 ? true : false} value="2" name="optionAbnormalImg" />
-                                            <label className="form-check-label" >Yes, likely colorectal cancer</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveAbnormalImg == 3 ? true : false} value="3" name="optionAbnormalImg" />
-                                            <label className="form-check-label" >Yes, unlikely colorectal cancer </label>
-
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveAbnormalImg-${"1"}`} checked={this.state.positiveAbnormalImg == 1 ? true : false} name="optionAbnormalImg" value="1" />
+                                            <Form.Check custom label="Yes, likely colorectal cancer" type={"radio"} id={`positiveAbnormalImg-${"2"}`} checked={this.state.positiveAbnormalImg == 2 ? true : false} name="optionAbnormalImg" value="2" />
+                                            <Form.Check custom label="Yes, unlikely colorectal cancer" type={"radio"} id={`positiveAbnormalImg-${"3"}`} checked={this.state.positiveAbnormalImg == 3 ? true : false} name="optionAbnormalImg" value="3" />
                                         </div>
                                         <div className="validationMsg">
                                             <Error name="optionAbnormalImg" />
@@ -714,17 +674,16 @@ export default class PatientInfo extends React.Component {
                                     <label>Surveillance colonoscopy as per NHMRC guidelines</label><br />
                                     <div className="padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveSurveillanceCol == 1 ? true : false} value="1" name="optionSurveillanceCol" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveSurveillanceCol == 2 ? true : false} value="2" name="optionSurveillanceCol" />
-                                            <label className="form-check-label" >Yes, overdue by > 60 days</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveSurveillanceCol == 3 ? true : false} value="3" name="optionSurveillanceCol" />
-                                            <label className="form-check-label" >Yes, not overdue by > 60 days </label>
+
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveSurveillanceCol-${"1"}`} checked={this.state.positiveSurveillanceCol == 1 ? true : false} name="optionSurveillanceCol" value="1" />
+                                            <Form.Check custom label="Yes, overdue by > 60 days" type={"radio"} id={`positiveSurveillanceCol-${"2"}`} checked={this.state.positiveSurveillanceCol == 2 ? true : false} name="optionSurveillanceCol" value="2" />
+                                            <Form.Check custom label="Yes, not overdue by > 60 days " type={"radio"} id={`positiveSurveillanceCol-${"3"}`} checked={this.state.positiveSurveillanceCol == 3 ? true : false} name="optionSurveillanceCol" value="3" />
+
+                                        </div>
+                                        <div className="validationMsg">
+                                            <Error name="optionSurveillanceCol" />
                                         </div>
                                     </div>
-                                </div>
-                                <div className="validationMsg">
-                                    <Error name="optionSurveillanceCol" />
                                 </div>
                                 <hr className="hr1" />
 
@@ -737,16 +696,14 @@ export default class PatientInfo extends React.Component {
                                     <label>Therapeutic polypectomy</label><br />
                                     <div className="padding-Radio row col-sm-11">
                                         <div className=" col-sm-10">
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveTherapeuticPoly == 1 ? true : false} value="1" name="optionTherapeuticPoly" />
-                                            <label className="form-check-label" >No</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveTherapeuticPoly == 2 ? true : false} value="2" name="optionTherapeuticPoly" />
-                                            <label className="form-check-label" >Yes, ≥ 2 cm</label><br />
-                                            <input className="form-check-input" type="radio" checked={this.state.positiveTherapeuticPoly == 3 ? true : false} value="3" name="optionTherapeuticPoly" />
-                                            <label className="form-check-label" >Yes, &gt; 2 cm </label>
+
+                                            <Form.Check custom label="No" type={"radio"} id={`positiveTherapeuticPoly-${"1"}`} checked={this.state.positiveTherapeuticPoly == 1 ? true : false} name="optionTherapeuticPoly" value="1" />
+                                            <Form.Check custom label="Yes, ≥ 2 cm" type={"radio"} id={`positiveTherapeuticPoly-${"2"}`} checked={this.state.positiveTherapeuticPoly == 2 ? true : false} name="optionTherapeuticPoly" value="2" />
+                                            <Form.Check custom label="Yes, &gt; 2 cm" type={"radio"} id={`positiveTherapeuticPoly-${"3"}`} checked={this.state.positiveTherapeuticPoly == 3 ? true : false} name="optionTherapeuticPoly" value="3" />
                                         </div>
-                                    </div>
-                                    <div className="validationMsg">
-                                        <Error name="optionTherapeuticPoly" />
+                                        <div className="validationMsg">
+                                            <Error name="optionTherapeuticPoly" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
